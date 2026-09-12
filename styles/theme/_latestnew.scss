@@ -1,0 +1,115 @@
+@import './variables';
+
+.latest-news-section {
+
+    .heading-divider {
+        width: 60px;
+        height: 3px;
+        background-color: $primary;
+    }
+
+    .news-slider-wrapper {
+        position: relative;
+        padding: 0 15px;
+
+        .news-card {
+
+            .news-img-wrapper {
+                overflow: hidden;
+                border-radius: $border-radius-none;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    transition: transform $transition-speed $transition-fn;
+                }
+
+                &:hover img {
+                    transform: scale(1.05);
+                }
+            }
+
+            .news-meta {
+                color: $gray-600;
+
+                .comment-link {
+                    transition: color $transition-speed $transition-fn;
+
+                    &:hover {
+                        color: $primary !important;
+                    }
+                }
+            }
+
+            .news-title {
+                line-height: 1.4;
+                color: $heading-color;
+                cursor: pointer;
+                transition: color $transition-speed $transition-fn;
+            }
+
+            .pink-underline {
+                width: 50px;
+                height: 2px;
+                background-color: $primary;
+            }
+        }
+
+        .news-carousel {
+
+            .carousel-control-prev,
+            .carousel-control-next {
+                width: 42px;
+                height: 42px;
+                background-color: $white;
+                border-radius: 50%;
+                border: 1px solid $gray-300;
+                box-shadow: $box-shadow-sm;
+                top: 35%;
+                transform: translateY(-50%);
+                opacity: 0;
+                visibility: hidden;
+                transition:
+                    opacity 0.3s ease,
+                    visibility 0.3s ease,
+                    background-color 0.2s ease,
+                    border-color 0.2s ease;
+
+                &:hover {
+                    background-color: $primary;
+                    border-color: $primary;
+
+                    .carousel-control-prev-icon,
+                    .carousel-control-next-icon {
+                        filter: brightness(0) invert(1);
+                    }
+                }
+            }
+
+            .carousel-control-prev {
+                left: -20px;
+            }
+
+            .carousel-control-next {
+                right: -20px;
+            }
+
+            &:hover {
+
+                .carousel-control-prev,
+                .carousel-control-next {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+
+            .carousel-control-prev-icon,
+            .carousel-control-next-icon {
+                width: 0.9rem;
+                height: 0.9rem;
+                filter: invert(0.4);
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+@import './variables';
+
+.product-toolbar {
+
+
+    .sort-select {
+        font-size: $font-size-sm;
+        padding: 0.5rem 2.25rem 0.5rem 0.75rem;
+        cursor: pointer;
+
+        &:focus {
+            border-color: $primary;
+        }
+    }
+
+    .view-btn {
+        width: 38px;
+        height: 38px;
+        transition: $transition-base;
+
+        &.active-btn {
+            background-color: $primary;
+            color: $white;
+        }
+
+        &.inactive-btn {
+            border-color: $gray-300;
+            color: $gray-600;
+
+            &:hover {
+                background-color: $gray-100;
+                color: $primary;
+            }
+        }
+    }
+}

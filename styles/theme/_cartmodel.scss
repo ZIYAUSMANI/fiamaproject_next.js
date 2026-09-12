@@ -1,0 +1,24 @@
+@import "variables";
+
+.cart-modal {
+    .modal-dialog {
+        max-width: 520px;
+    }
+
+    .fs-7 {
+        font-size: 0.8125rem; // ~13px matching clean design ratio
+    }
+
+    // Ensure Bootstrap close button aligns flush against top-right corner
+    .btn-close-custom {
+        background-color: $primary !important;
+        color: $secondary !important;
+
+
+        border-radius: 0%;
+
+        &:hover {
+            background-color: $primary;
+        }
+    }
+}

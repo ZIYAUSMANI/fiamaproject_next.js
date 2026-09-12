@@ -1,7 +1,20 @@
+import path from "path";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-  reactCompiler: true,
+    reactCompiler: true,
+
+    sassOptions: {
+        loadPaths: [
+            path.join(process.cwd(), "node_modules/bootstrap/scss")
+        ],
+        silenceDeprecations: [
+            "import",
+            "mixed-decls",
+            "color-functions",
+            "global-builtin",
+        ],
+    },
 };
 
 export default nextConfig;

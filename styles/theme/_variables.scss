@@ -1,0 +1,127 @@
+        // ==========================================
+        // 1. BRAND & THEME COLORS
+        // ==========================================
+        $primary: #E55472;
+        $secondary: #111111;
+        $accent: #9AC45C;
+        $info: #2F80ED;
+        $warning: #FFB800;
+        $danger: #EB5757;
+
+        $white: #ffffff;
+        $gray-100: #f8f9fa;
+        $gray-200: #f3f3f3;
+        $gray-300: #F0F0F0;
+        $gray-400: #cccccc;
+        $gray-500: #999999;
+        $gray-600: #666666;
+        $gray-700: #555555;
+        $gray-800: #272829;
+        $gray-900: #111111;
+
+
+        $body-bg: $white;
+        $body-color: $gray-700;
+        $heading-color: $gray-900;
+        $border-color: $gray-300;
+        $input-bg: $white;
+        $input-border-color: $gray-300;
+
+        $theme-colors: (
+            "primary": $primary,
+            "secondary": $secondary,
+            "success": $accent,
+            // you can map green here
+            "info": $info,
+            "warning": $warning,
+            "danger": $danger,
+            "light": $gray-100,
+            "dark": $gray-900,
+            "gray":$gray-600,
+            "moregray":$gray-700,
+            "lightgray":$gray-300,
+
+        );
+
+
+        // ==========================================
+        // 2. TYPOGRAPHY
+        // ==========================================
+        $font-family-sans-serif: 'Montserrat', sans-serif;
+        $font-family-heading: 'Montserrat', sans-serif;
+        $font-family-base: $font-family-sans-serif;
+
+        $font-size-root: 16px;
+        $font-size-base: 1rem;
+        $font-size-lg: 1.125rem;
+        $font-size-sm: 0.875rem;
+        $font-size-xs: 0.75rem;
+
+        $font-weight-light: 300;
+        $font-weight-normal: 400;
+        $font-weight-medium: 500;
+        $font-weight-semibold: 600;
+        $font-weight-bold: 700;
+        $font-weight-bolder: 900;
+        $line-height-base: 1.7;
+        $line-height-heading: 1.25;
+
+
+        // ==========================================
+        // 3. SPACING & LAYOUT
+        // ==========================================
+        $spacer: 1rem;
+        $spacers: (
+            0: 0,
+            1: $spacer * 0.25,
+            2: $spacer * 0.5,
+            3: $spacer,
+            4: $spacer * 1.5,
+            5: $spacer * 3,
+            6: $spacer * 5
+        );
+
+        $container-max-width: 1200px;
+        $grid-gutter-width: 30px;
+
+
+        // ==========================================
+        // 4. BORDERS & RADIUS
+        // ==========================================
+        $border-width: 1px;
+        $border-style: solid;
+
+        $border-radius-none: 0;
+        $border-radius-sm: 3px;
+        $border-radius: 5px;
+        $border-radius-lg: 10px;
+        $border-radius-pill: 50px;
+
+
+        // ==========================================
+        // 5. SHADOWS & TRANSITIONS
+        // ==========================================
+        $box-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+        $box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        $box-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+
+        $transition-speed: 0.3s;
+        $transition-fn: ease-in-out;
+        $transition-base: all $transition-speed $transition-fn;
+
+
+        // ==========================================
+        // 6. BUTTON SPECIFICATIONS
+        // ==========================================
+        $btn-padding-y: 14px;
+        $btn-padding-x: 35px;
+        $btn-font-size: 0.875rem;
+        $btn-font-weight: $font-weight-medium;
+        $btn-line-height: 1;
+        $btn-border-radius: $border-radius-none;
+        $btn-letter-spacing: 1px;
+        $btn-text-transform: uppercase;
+
+        .category-link:hover {
+            color: var(--bs-primary) !important;
+        }

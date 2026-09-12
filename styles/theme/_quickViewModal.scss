@@ -1,0 +1,266 @@
+.quickview-modal {
+    .modal-dialog {
+        max-width: 850px;
+    }
+
+    .modal-content {
+        overflow: hidden;
+        background: $white;
+        border: $border-width $border-style $border-color;
+        border-radius: $border-radius-none;
+        box-shadow: $box-shadow-lg;
+    }
+
+    .quickview-close {
+        position: absolute;
+        top: 14px;
+        right: 15px;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: $border-radius-none;
+        background: $primary;
+        color: $white;
+        z-index: 20;
+        cursor: pointer;
+        transition: $transition-base;
+
+        &:hover {
+            background: darken($primary, 8%);
+            color: $white;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .quickview-image-col {
+        height: 390px;
+    }
+
+    .quickview-image-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $spacer * 2;
+        background: $white;
+    }
+
+    .quickview-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: $transition-base;
+
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+
+    .quickview-content {
+        padding: $spacer * 2.5 $spacer * 2.2 $spacer * 2.2 $spacer;
+    }
+
+    .quickview-title {
+        margin-bottom: $spacer * 0.75;
+        color: $heading-color;
+        font-family: $font-family-heading;
+        font-size: 25px;
+        font-weight: $font-weight-medium;
+        line-height: 1.15;
+    }
+
+    .quickview-price-wrapper {
+        display: flex;
+        align-items: center;
+        gap: $spacer * 0.75;
+        margin-bottom: $spacer * 0.5;
+    }
+
+    .quickview-price {
+        color: $primary;
+        font-family: $font-family-base;
+        font-size: 21px;
+        font-weight: $font-weight-medium;
+        line-height: 1.3;
+    }
+
+    .quickview-old-price {
+        color: $gray-500;
+        font-family: $font-family-base;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+        text-decoration: line-through;
+    }
+
+    .quickview-rating {
+        display: flex;
+        align-items: center;
+        gap: $spacer * 0.4;
+        margin-bottom: $spacer * 1.4;
+    }
+
+    .stars {
+        color: $warning;
+        font-size: $font-size-sm;
+        letter-spacing: 1px;
+        line-height: 1;
+    }
+
+    .review-count {
+        color: $warning;
+        font-family: $font-family-base;
+        font-size: 13px;
+        font-weight: $font-weight-normal;
+    }
+
+    .quickview-description {
+        max-width: 370px;
+        margin-bottom: $spacer * 1.4;
+        color: $gray-600;
+        font-family: $font-family-base;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+        line-height: 1.45;
+    }
+
+    .quickview-actions {
+        display: flex;
+        align-items: center;
+        gap: $spacer * 0.75;
+        margin-bottom: $spacer * 1.5;
+    }
+
+    .add-cart-btn {
+        padding: 9px 17px;
+        border: $border-width $border-style $primary;
+        border-radius: $btn-border-radius;
+        background: $primary;
+        color: $white;
+        font-family: $font-family-base;
+        font-size: $btn-font-size;
+        font-weight: $btn-font-weight;
+        line-height: $btn-line-height;
+        letter-spacing: $btn-letter-spacing;
+        text-transform: $btn-text-transform;
+        transition: $transition-base;
+
+        &:hover {
+            border-color: darken($primary, 8%);
+            background: darken($primary, 8%);
+            color: $white;
+        }
+
+        &:focus,
+        &:active {
+            border-color: $primary;
+            background: $primary;
+            color: $white;
+            box-shadow: none;
+        }
+    }
+
+    .wishlist-btn {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: $border-width $border-style $primary;
+        border-radius: $border-radius-none;
+        background: $primary;
+        color: $white;
+        cursor: pointer;
+        transition: $transition-base;
+
+        &:hover {
+            border-color: darken($primary, 8%);
+            background: darken($primary, 8%);
+            color: $white;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .quickview-share {
+        display: flex;
+        align-items: center;
+        gap: $spacer * 0.9;
+        color: $gray-600;
+        font-family: $font-family-base;
+        font-size: $font-size-sm;
+    }
+
+    .quickview-share span {
+        margin-right: $spacer * 0.3;
+        color: $gray-700;
+    }
+
+    @media (max-width: 767px) {
+        .modal-dialog {
+            margin: 15px;
+        }
+
+        .quickview-image-col {
+            height: 280px;
+        }
+
+        .quickview-image-wrapper {
+            padding: $spacer * 1.5;
+        }
+
+        .quickview-content {
+            padding: $spacer * 1.5;
+        }
+
+        .quickview-title {
+            font-size: 21px;
+        }
+
+        .quickview-description {
+            max-width: none;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .modal-dialog {
+            margin: 10px;
+        }
+
+        .quickview-image-col {
+            height: 230px;
+        }
+
+        .quickview-image-wrapper {
+            padding: $spacer;
+        }
+
+        .quickview-content {
+            padding: $spacer * 1.25;
+        }
+
+        .quickview-title {
+            font-size: 19px;
+        }
+
+        .quickview-price {
+            font-size: 18px;
+        }
+
+        .quickview-description {
+            font-size: $font-size-xs;
+        }
+    }
+}

@@ -1,0 +1,65 @@
+@import './variables';
+
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+
+  width: 45px;
+  height: 45px;
+
+  background-color: $white;
+  border: 1px solid $gray-300;
+  outline: none;
+
+  box-shadow: $box-shadow-lg;
+  cursor: pointer;
+
+  transform: rotate(45deg);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: fadeIn 0.3s ease-in-out;
+
+  transition:
+    background-color $transition-speed $transition-fn,
+    transform $transition-speed $transition-fn,
+    box-shadow $transition-speed $transition-fn;
+
+  .icon-wrapper {
+    transform: rotate(-45deg);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: $gray-900;
+
+    transition: color $transition-speed $transition-fn;
+  }
+
+  &:hover {
+    background-color: $primary;
+    transform: rotate(45deg) translateY(-4px);
+    box-shadow: $box-shadow-lg;
+
+    .icon-wrapper {
+      color: $white;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: rotate(45deg) translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(45deg) translateY(0);
+  }
+}

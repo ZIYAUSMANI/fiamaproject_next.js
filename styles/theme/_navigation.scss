@@ -1,0 +1,105 @@
+@import './variables.scss';
+
+.custom-navbar {
+    font-family: $font-family-base;
+    width: 100%;
+    transition: all 0.35s ease-in-out;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    &.hero-active {
+        position: relative;
+        background-color: transparent !important;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        .navbar-logo {
+            display: none !important;
+        }
+
+        .nav-collapse-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links-container {
+            margin: 0 auto;
+        }
+
+        .nav-link {
+            color: $gray-700 !important;
+            font-weight: $font-weight-medium;
+            background-color: transparent !important;
+
+            &:hover {
+                color: $primary !important;
+                background-color: transparent !important;
+            }
+
+        }
+    }
+
+    /* Sticky State */
+    &.sticky-active {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1030;
+
+        background-color: #ffffff !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        animation: slideDown 0.4s ease-in-out;
+
+        .navbar-logo {
+            display: block !important;
+
+            img {
+                max-height: 40px;
+                width: auto;
+            }
+        }
+
+        .nav-collapse-wrapper {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-links-container {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .nav-link {
+            color: #222222 !important;
+            background-color: transparent !important;
+
+            &:hover {
+                color: $primary !important;
+                background-color: transparent !important;
+            }
+        }
+    }
+
+    /* Base Navigation */
+    .nav-link {
+        font-size: $font-size-sm;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        padding: 0.5rem 0 !important;
+        transition: color 0.3s ease;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}

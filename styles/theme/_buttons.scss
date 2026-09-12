@@ -1,0 +1,90 @@
+.btn {
+    display: inline-block;
+    padding: $btn-padding-y $btn-padding-x;
+    font-family: $font-family-base;
+    font-size: $btn-font-size;
+    font-weight: $btn-font-weight;
+    line-height: $btn-line-height;
+    letter-spacing: $btn-letter-spacing;
+    text-transform: $btn-text-transform;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: $btn-border-radius;
+    border: $border-width $border-style transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: $transition-base;
+    outline: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        box-shadow: $box-shadow-sm;
+    }
+
+    // Variant: Primary
+    &-primary {
+        background-color: $primary;
+        color: $white;
+        border-color: $primary;
+
+        &:hover {
+            background-color: white;
+            border-color: $gray-600;
+            color: $gray-600;
+        }
+    }
+
+    // Variant: Secondary
+    &-secondary {
+        background-color: $gray-600;
+        color: $white;
+        border-color: $gray-600;
+
+        &:hover {
+            background-color: $white;
+            border-color: $primary;
+            color: $secondary;
+        }
+    }
+
+    // Variant: Outline
+    &-outline-primary {
+        background-color: transparent;
+        color: $primary;
+        border-color: $primary;
+
+        &:hover {
+            background-color: $primary;
+            color: $white;
+        }
+    }
+
+    // Variant: White
+    &-white {
+        background-color: $white;
+        color: $secondary;
+        border-color: $white;
+
+        &:hover {
+            background-color: $primary;
+            color: $white;
+            border-color: $primary;
+        }
+    }
+
+    &-gray {
+        background-color: $gray-600;
+        color: $white;
+        border-color: $white;
+
+        &:hover {
+            background-color: $primary;
+            color: $white;
+            border-color: $primary;
+        }
+    }
+
+}

@@ -1,0 +1,89 @@
+@import "variables";
+
+
+
+.flower-card {
+
+
+
+    .card-img-top {
+        height: 300px;
+        object-fit: contain;
+        background-color: $gray-200;
+    }
+
+    .badge {
+        font-size: $font-size-xs;
+        z-index: 2;
+
+    }
+}
+
+.hover-cart {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: $gray-600;
+    color: $white;
+    opacity: 0;
+    transition: $transition-base;
+    z-index: 3;
+
+    div {
+        transition: $transition-base;
+
+        &:hover {
+            background-color: $primary;
+        }
+    }
+}
+
+.flower-card:hover .hover-cart {
+    opacity: 1;
+}
+
+.add-cart-text {
+    display: inline-block;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    letter-spacing: $btn-letter-spacing;
+}
+
+.cart-icon {
+    display: none;
+    font-size: $font-size-lg;
+}
+
+.text-color {
+    color: $gray-600;
+}
+
+.text-lighter {
+    color: $gray-500;
+}
+
+// Media Queries
+@media (max-width: 1029px) {
+    .add-cart-text {
+        display: none;
+    }
+
+    .cart-icon {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 576px) {
+    .add-cart-text {
+        font-size: $font-size-xs;
+    }
+
+    .hover-cart div {
+        padding: map-get($spacers, 2) !important;
+    }
+}
+
+.small-size {
+    font-size: $font-size-xs;
+}

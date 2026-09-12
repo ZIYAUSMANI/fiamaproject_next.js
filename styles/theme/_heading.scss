@@ -1,0 +1,14 @@
+@import "variables";
+.heading-underline {
+    position: relative;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 90px;
+        height: 2px;
+        background-color: $primary;
+        margin: 12px auto 0 auto;
+        border-radius: $border-radius-pill;
+    }
+}

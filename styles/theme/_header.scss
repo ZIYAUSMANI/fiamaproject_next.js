@@ -1,0 +1,133 @@
+@import "variables";
+
+.fiama-header {
+    background-color: $white;
+
+    .phone-title {
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+    }
+
+    .phone-number {
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+
+
+    .search-input-group {
+        border: 1px solid #e2e8f0;
+        border-radius: 50px;
+        overflow: hidden;
+        padding: 2px 8px;
+        transition: $transition-base;
+
+        &:focus-within {
+            border-color: $primary;
+            box-shadow: 0 0 0 1px $primary;
+        }
+
+        .search-input {
+            border: none;
+            font-size: 0.9rem;
+            padding-left: 15px;
+            color: $gray-700;
+
+            &::placeholder {
+                color: $secondary;
+            }
+        }
+
+        .search-icon-btn {
+            border: none;
+            cursor: pointer;
+            padding-right: 15px;
+        }
+    }
+
+
+    .cart-icon-wrapper {
+        .bg-pink {
+            background-color: $primary !important;
+            color: $white;
+        }
+
+        .cart-badge {
+            top: -6px;
+            right: -8px;
+            font-size: 0.7rem;
+            padding: 4px 6px;
+            min-width: 18px;
+            min-height: 18px;
+            line-height: 1;
+        }
+    }
+
+
+    .cart-widget {
+        .cart-title {
+            font-size: 0.75rem;
+            line-height: 1;
+        }
+
+        .cart-price {
+            font-size: 0.85rem;
+            color: $primary;
+            font-weight: 500;
+        }
+    }
+}
+
+.cart-offcanvas {
+    .overflow-auto {
+        max-height: 320px;
+        padding-right: 8px;
+
+
+        &::-webkit-scrollbar {
+            width: 2px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 2px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 2px;
+
+            &:hover {
+                background: #999;
+            }
+        }
+
+
+        scrollbar-width: thin;
+        scrollbar-color: #ccc #f1f1f1;
+    }
+}
+
+.mobile-menu-offcanvas {
+
+    .mobile-nav-item {
+        color: $gray-700 !important;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $primary !important;
+        }
+
+    }
+
+    /* Account links hover */
+    .user-links-section {
+        a {
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $primary !important;
+            }
+        }
+    }
+}

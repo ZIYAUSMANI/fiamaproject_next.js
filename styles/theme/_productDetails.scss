@@ -1,0 +1,118 @@
+@import "variables";
+
+.thumbnail-wrapper {
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 6px;
+    background-color: $gray-100;
+    transition: $transition-base;
+
+    &:hover {
+        border-color: $primary;
+        opacity: 0.85;
+    }
+
+    /* Active State using CSS Custom Property */
+    &.active {
+        border: 1px solid $primary;
+        box-shadow: 0 0 0 1px $primary;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+.main-image-container {
+    background-color: $gray-100;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .main-product-img {
+        max-height: 500px;
+        object-fit: contain;
+    }
+}
+
+
+/* Tablet */
+@media (max-width: 991.98px) {
+    .product-info-wrapper {
+        padding-left: 0 !important;
+    }
+
+    .main-product-img {
+        max-width: 450px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767.98px) {
+    .thumbnail-list {
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 5px;
+        flex-wrap: nowrap;
+    }
+
+    .thumbnail-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+
+    .main-image-container {
+        margin-top: 5px;
+    }
+
+    .main-product-img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .product-title {
+        font-size: 1.4rem;
+    }
+
+    .product-description {
+        font-size: 0.9rem;
+    }
+
+    .quantity-selector {
+        flex-shrink: 0;
+    }
+
+    .product-info-wrapper {
+        padding: 0 !important;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+    .thumbnail-wrapper {
+        width: 50px;
+        height: 50px;
+    }
+
+    .product-title {
+        font-size: 1.25rem;
+    }
+
+    .quantity-selector button {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    .quantity-selector span {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .product-info-wrapper .btn {
+        font-size: 12px;
+    }
+}

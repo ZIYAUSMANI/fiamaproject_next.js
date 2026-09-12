@@ -1,0 +1,26 @@
+@import './variables'; // Import your SCSS variables file
+
+.brand-logo-area {
+    background-color: $gray-100; // Matches light background from design
+
+    .brand-logo-col {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $spacer;
+
+        .brand-logo-img {
+            max-height: 80px;
+            object-fit: contain;
+            // Optional opacity for soft gray logo look (matches design image)
+            opacity: 0.7;
+            transition: transform 0.4s ease, opacity $transition-speed $transition-fn;
+
+            &:hover {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+    }
+}

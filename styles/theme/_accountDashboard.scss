@@ -1,0 +1,65 @@
+@import "variables";
+
+.dashboard-nav {
+    border-color: $gray-300 !important;
+    border-radius: $border-radius-none;
+
+    .nav-item {
+        &:not(:last-child) {
+            border-bottom: $border-width $border-style $gray-300;
+        }
+    }
+
+    .nav-link {
+        color: $gray-700;
+        font-family: $font-family-base;
+        font-size: $font-size-base;
+        font-weight: $font-weight-normal;
+        padding: 1rem 1.25rem;
+        border-radius: $border-radius-none;
+        transition: $transition-base;
+
+        &:hover {
+            color: $primary;
+            background-color: transparent;
+        }
+
+        &.active {
+            background-color: $gray-900; // Matches the dark active tab header in image
+            color: $white;
+            font-weight: $font-weight-medium;
+        }
+    }
+}
+
+.dashboard-content {
+    .bg-light {
+        background-color: $gray-100 !important;
+    }
+}
+
+.hover-primary {
+    transition: $transition-base;
+
+    &:hover {
+        color: $primary !important;
+    }
+}
+
+.NavLink {
+    color: $secondary;
+
+    &:hover {
+        color: $primary;
+    }
+
+}
+
+.NavLinkgary {
+    color: $gray-700;
+
+    &:hover {
+        color: $primary;
+    }
+
+}

@@ -1,0 +1,74 @@
+@import "variables";
+
+.container.register-container {
+    width: 100%;
+    max-width: 600px;
+    padding-top: $spacer * 0.25;
+    padding-bottom: $spacer * 0.25;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom-input {
+    background-color: $gray-100;
+    border: $border-width solid transparent;
+    border-radius: $border-radius-none;
+    padding: 14px 18px;
+    font-size: 0.9rem;
+    color: $gray-700;
+
+    &::placeholder {
+        color: $gray-500;
+    }
+
+    &:focus {
+        background-color: $gray-100;
+        border-color: $primary;
+        box-shadow: none;
+    }
+
+    &.is-invalid {
+        border-color: $danger;
+    }
+}
+
+.consent-text {
+    font-size: 0.85rem;
+    color: $gray-700;
+}
+
+.register-policy {
+    font-size: 0.875rem;
+    color: $gray-800;
+}
+
+.policy-separator {
+    color: $gray-400;
+    margin-left: $spacer * 0.75;
+    margin-right: $spacer * 0.75;
+}
+
+.custom-link {
+    color: $gray-800;
+    text-decoration: none;
+    transition: $transition-base;
+    letter-spacing: 0.5px;
+
+    &:hover {
+        color: $primary !important;
+    }
+}
+
+.already-account-link {
+    color: $gray-500;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.875rem;
+    font-weight: $font-weight-normal;
+    transition: $transition-base;
+
+    &:hover {
+        color: $primary !important;
+    }
+}

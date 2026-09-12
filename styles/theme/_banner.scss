@@ -1,0 +1,27 @@
+@import "variables";
+
+.banner-area {
+    margin-top: map-get($spacers, 5); // Uses your SCSS spacer (48px)
+
+    .banner-item {
+        position: relative;
+        margin-bottom: map-get($spacers, 4); // Spacing for mobile wrap
+
+        .banner-img {
+            overflow: hidden;
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+                // Smooth image scale transition
+                transition: transform 1.5s ease;
+            }
+
+            &:hover img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}

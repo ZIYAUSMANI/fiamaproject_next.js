@@ -1,0 +1,67 @@
+@import "variables";
+
+.cart-actions-wrapper {
+    font-family: $font-family-base;
+
+
+    .coupon-input {
+        background-color: $gray-100;
+        border: none;
+        border-radius: 0;
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+
+        &:focus {
+            box-shadow: none;
+            background-color: $gray-100;
+        }
+    }
+
+    .btn-update-cart {
+        background-color: $white;
+        color: $gray-700;
+        border: 1px solid $gray-400;
+
+        &:hover {
+            border-color: $secondary;
+            color: $secondary;
+        }
+    }
+
+    .cart-totals-card {
+        h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: $gray-900;
+            margin-bottom: 1.5rem;
+        }
+
+        .totals-table {
+            width: 100%;
+            border-collapse: collapse;
+
+            tr {
+                border-bottom: 1px solid $gray-300;
+            }
+
+            td {
+                padding: 0.75rem 0;
+                font-size: 0.9rem;
+                color: $gray-700;
+
+                &:last-child {
+                    text-align: right;
+                }
+            }
+
+            .total-row {
+                td {
+                    padding-top: 1rem;
+                    font-weight: 700;
+                    color: $gray-900;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
