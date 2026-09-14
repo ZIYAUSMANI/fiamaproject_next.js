@@ -10,10 +10,17 @@ import { Eye } from "react-bootstrap-icons";
 
 const ProductCard = ({ product }) => {
     const [showQuickView, setShowQuickView] = useState(false);
+    const handleProductClick = () => {
+        navigate(
+            `/${product.category}/${product.title.replace(/\s+/g, '-')}`,
+            {
+                state: {
+                    productId: product.id
+                }
+            }
+        );
+    };
 
-    const productSlug = product.title.replace(/\s+/g, "-").toLowerCase();
-
-    const productHref = `/${product.category}/${productSlug}?productId=${product.id}`;
 
     return (
         <>
@@ -24,7 +31,10 @@ const ProductCard = ({ product }) => {
                     </Badge>
                 )}
 
-                <Link href={productHref} className="d-block">
+                <Link
+                    href={`/productsDetails/${product.id}`}
+                    className="text-decoration-none"
+                >
                     <Card.Img
                         variant="top"
                         src={product.thumbnail}
@@ -32,6 +42,7 @@ const ProductCard = ({ product }) => {
                         className="flower-card-img rounded-0"
                     />
                 </Link>
+
 
                 <div className="hover-cart d-flex align-items-center p-0">
                     <div className="px-3 py-2 wishlist-btn">
