@@ -9,6 +9,7 @@ import { getProducts } from "@/helper/Services";
 import { ConvertToCurrency } from "@/utils/utils";
 import AddToCartRedux from "@/app/cart/_component/AddTocartRedux";
 import AddToWishlistRedux from "@/app/wishlist/_component/AddToWishlistRedux";
+import BreadcrumbBanner from "@/component/BreadcrumbBanner";
 
 
 const ProductDetails = () => {
@@ -44,6 +45,7 @@ const ProductDetails = () => {
 
     return (
         <Fragment>
+            <BreadcrumbBanner />
             {loading ? (
                 <Container className="py-5 mt-5 text-center">
                     <Spinner size="sm" className="me-2" />
