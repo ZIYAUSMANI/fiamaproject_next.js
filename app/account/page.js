@@ -1,5 +1,12 @@
-import "../../styles/theme.scss";
+import BreadcrumbBanner from "@/component/BreadcrumbBanner";
 
-export default function Account() {
-    return <h1>Account Page</h1>;
+
+export default function AboutPage() {
+    return (
+        <>
+            <BreadcrumbBanner />
+            <h1>About Page</h1>
+            
+        </>
+    );
 }

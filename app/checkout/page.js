@@ -1,5 +1,10 @@
-
+import BreadcrumbBanner from "@/component/BreadcrumbBanner";
 
 export default function Cart() {
-    return <h1>Checkout page</h1>;
+    return (
+        <>
+            <BreadcrumbBanner />
+            <h1>Checkout Page</h1>
+        </>
+    );
 }

@@ -47,8 +47,8 @@
         // ==========================================
         // 2. TYPOGRAPHY
         // ==========================================
-        $font-family-sans-serif: 'Montserrat', sans-serif;
-        $font-family-heading: 'Montserrat', sans-serif;
+        $font-family-sans-serif: var(--font-montserrat), sans-serif;
+        $font-family-heading: var(--font-montserrat), sans-serif;
         $font-family-base: $font-family-sans-serif;
 
         $font-size-root: 16px;
@@ -124,4 +124,8 @@
 
         .category-link:hover {
             color: var(--bs-primary) !important;
+        }
+
+        body {
+            font-family: var(--font-montserrat), sans-serif;
         }

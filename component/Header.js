@@ -18,6 +18,9 @@ import { FiSearch, FiMenu } from 'react-icons/fi';
 import { BsHandbag, BsHeart, BsTelephone, BsTrash, BsPerson } from 'react-icons/bs';
 import { FaFacebookF, FaTwitter, FaPinterestP, FaInstagram } from 'react-icons/fa';
 import { NAV_ITEMS } from '@/data/Navigationdata';
+import { removeFromCart } from '@/store/Slice/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { ConvertToCurrency } from '@/utils/utils';
 
 /*import image1 from "../assets/image/1.webp";
 import image2 from "../assets/image/2.webp";
@@ -32,23 +35,19 @@ import { removeFromCart } from '../../../../indexpert/react/fiamaproject/src/sto
 
 
 export default function Header() {
-    const [cartItems, setCartItems] = useState([
-        { id: 1, title: "Premium Joyful", quantity: 1, price: 65.00, image: "/image/1.webp" },
-        { id: 2, title: "The White Rose", quantity: 1, price: 85.00, image: "/image/2.webp" },
-        { id: 3, title: "The White Rose", quantity: 1, price: 85.00, image: "/image/2.webp" }
-    ]);
-    /*   const { wishlistItems } = useSelector((state) => state.wishlist);
-      const cartState = useSelector((state) => state.cart)
-  
-      const dispatch = useDispatch();
-  
-  
-      const handleRemove = (id) => {
-          dispatch(removeFromCart(id));
-      };
-      
-  
-      */
+
+    const { wishlistItems } = useSelector((state) => state.wishlist);
+    const cartState = useSelector((state) => state.cart)
+
+    const dispatch = useDispatch();
+
+
+    const handleRemove = (id) => {
+        dispatch(removeFromCart(id));
+    };
+
+
+
 
     const [showMenu, setShowMenu] = useState(false);
     const handleCloseMenu = () => setShowMenu(false);
@@ -61,14 +60,7 @@ export default function Header() {
         e.preventDefault();
         setShowCart(true);
     };
-    const handleRemove = (id) => {
-        setCartItems(cartItems.filter((item) => item.id !== id));
-    };
 
-    const subTotal = cartItems.reduce(
-        (total, item) => total + item.price * item.quantity,
-        0
-    );
 
 
 
@@ -136,7 +128,7 @@ export default function Header() {
                             >
                                 <BsHeart size={20} className="text-dark mt-1" />
                                 <span className="cart-badge badge rounded-circle bg-pink position-absolute">
-                                    2
+                                    {wishlistItems.length}
                                 </span>
                             </Link>
 
@@ -149,7 +141,7 @@ export default function Header() {
                                 <div className="cart-icon-wrapper position-relative me-2 me-sm-3 d-inline-flex align-items-center">
                                     <BsHandbag size={22} className="text-dark mt-1" />
                                     <span className="cart-badge badge rounded-circle bg-pink position-absolute">
-                                        0
+                                        {cartState.totalQuantities}
                                     </span>
                                 </div>
 
@@ -159,7 +151,7 @@ export default function Header() {
                                     </span>
 
                                     <span className="cart-price small fw-medium text-pink">
-                                        {0}
+                                        {ConvertToCurrency(cartState.subTotal || 0)}
                                     </span>
                                 </div>
                             </Link>
@@ -273,7 +265,7 @@ export default function Header() {
                         <CloseButton onClick={handleCloseCart} className='text-dark' style={{ width: '0.4rem', height: '0.4rem' }} />
                     </div>
 
-                    {cartItems.length === 0 ? (
+                    {cartState.cartItems.length === 0 ? (
                         <Row>
                             <Col className="text-center py-5">
                                 <h4>Your cart is empty</h4>
@@ -285,7 +277,7 @@ export default function Header() {
                         </Row>
                     ) : (
                         <div className="overflow-auto custom-cart-scroll">
-                            {cartItems.map((item) => (
+                            {cartState.cartItems.map((item) => (
                                 <div key={item.id} className="d-flex pt-3 pb-4 border-bottom align-items-center">
                                     <div className="me-3 bg-light rounded d-flex align-items-center justify-content-center position-relative" style={{ width: '70px', height: '70px' }}>
                                         <button
@@ -297,7 +289,7 @@ export default function Header() {
                                         </button>
 
                                         <img
-                                            src={item.image}
+                                            src={item.thumbnail}
                                             alt={item.title}
                                             className="img-fluid"
                                             style={{ maxHeight: '60px' }}
@@ -323,7 +315,7 @@ export default function Header() {
                             <span className="fw-medium text-dark fs-6">Subtotal:</span>
 
                             <span className="text-primary fw-medium fs-6">
-                                {subTotal}
+                                {ConvertToCurrency(cartState.subTotal)}
                             </span>
                         </div>
 

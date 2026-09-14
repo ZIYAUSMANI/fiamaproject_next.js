@@ -1,5 +1,11 @@
-import "../../styles/theme.scss";
+import BreadcrumbBanner from "@/component/BreadcrumbBanner";
+import WishlistTable from "./_component/WishlistTable";
 
 export default function Wishlist() {
-    return <h1>Wishlist Page</h1>;
-}
+    return (
+        <>
+            <BreadcrumbBanner />
+            <WishlistTable />
+        </>
+    );
+}   
