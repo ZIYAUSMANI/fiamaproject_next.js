@@ -79,7 +79,6 @@ export default function Header() {
                                     alt="Fiama Logo"
                                     width={150}
                                     height={35}
-                                    style={{ maxHeight: "35px", width: "auto" }}
                                 />
                             </Link>
                         </Col>
@@ -176,7 +175,12 @@ export default function Header() {
             {/* Navigation Offcanvas Drawer */}
             <Offcanvas show={showMenu} onHide={handleCloseMenu} placement="start" className="mobile-menu-offcanvas">
                 <Offcanvas.Header className="justify-content-between border-bottom px-4 py-3">
-                    <img src="/image/logo.webp" alt="Fiama Logo" style={{ maxHeight: '30px', width: 'auto' }} />
+                    <Image
+                        src="/image/logo.webp"
+                        alt="Fiama Logo"
+                        width={128}
+                        height={30}
+                    />
                     <CloseButton onClick={handleCloseMenu} />
                 </Offcanvas.Header>
 

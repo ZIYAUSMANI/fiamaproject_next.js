@@ -10,9 +10,9 @@ const nextConfig = {
         ],
         silenceDeprecations: [
             "import",
-            "mixed-decls",
             "color-functions",
             "global-builtin",
+            "if-function",
         ],
     },
 };

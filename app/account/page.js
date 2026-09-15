@@ -1,12 +1,14 @@
 import BreadcrumbBanner from "@/component/BreadcrumbBanner";
+import AccountDashboard from "./_component/AccountDashboard";
 
 
-export default function AboutPage() {
+function Account() {
     return (
         <>
             <BreadcrumbBanner />
-            <h1>About Page</h1>
-            
+            <AccountDashboard />
         </>
     );
 }
+
+export default Account;

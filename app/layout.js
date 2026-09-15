@@ -5,7 +5,7 @@ import Footer from "@/component/Footer";
 import BrandLogo from "@/component/BrandLogo";
 import Navigation from "@/component/Navigation";
 import ScrollToTop from "@/component/ScrollToTop";
-import ReduxProvider from "@/component/ReduxProvider";
+import ReduxProvider from "@/provider/ReduxProvider";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
