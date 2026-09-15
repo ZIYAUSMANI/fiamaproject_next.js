@@ -7,7 +7,7 @@ export const NAV_ITEMS = [
     {
         id: "products",
         title: "PRODUCTS",
-        to: "/productsDetails/1",
+        to: "/beauty/Essence-Mascara-Lash-Princes?id=1",
     },
     {
         id: "shop",

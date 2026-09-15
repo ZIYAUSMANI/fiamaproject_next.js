@@ -3,7 +3,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 import { getProducts } from "@/helper/Services";
 import { ConvertToCurrency } from "@/utils/utils";
@@ -13,7 +13,8 @@ import BreadcrumbBanner from "@/component/BreadcrumbBanner";
 
 
 const ProductDetails = () => {
-    const { id } = useParams();
+    const searchParams = useSearchParams();
+    const productId = searchParams.get("id");
 
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [products, setProducts] = useState([]);
@@ -36,7 +37,7 @@ const ProductDetails = () => {
     }, []);
 
     const activeProduct = products.find(
-        (product) => String(product.id) === String(id)
+        (product) => String(product.id) === String(productId)
     );
 
     const selectedImage =

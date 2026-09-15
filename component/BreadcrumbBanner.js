@@ -40,7 +40,7 @@ const BreadcrumbBanner = () => {
                             <Breadcrumb.Item
                                 key={href}
                                 active
-                                className="fw-semibold text-capitalize text-dark"
+                                className="fw-semibold text-capitalize text-dark "
                             >
                                 {label}
                             </Breadcrumb.Item>
@@ -50,7 +50,7 @@ const BreadcrumbBanner = () => {
                                 href={href}
                                 linkAs={Link}
                                 linkProps={{ href }}
-                                className="text-capitalize text-dark"
+                                className="text-capitalize text-dark text-decoration-underline"
                             >
                                 {label}
                             </Breadcrumb.Item>

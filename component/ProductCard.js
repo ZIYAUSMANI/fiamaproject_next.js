@@ -10,17 +10,6 @@ import { Eye } from "react-bootstrap-icons";
 
 const ProductCard = ({ product }) => {
     const [showQuickView, setShowQuickView] = useState(false);
-    const handleProductClick = () => {
-        navigate(
-            `/${product.category}/${product.title.replace(/\s+/g, '-')}`,
-            {
-                state: {
-                    productId: product.id
-                }
-            }
-        );
-    };
-
 
     return (
         <>
@@ -32,7 +21,8 @@ const ProductCard = ({ product }) => {
                 )}
 
                 <Link
-                    href={`/productsDetails/${product.id}`}
+                    href={`${product.category}/${product.title
+                        .replace(/\s+/g, "-")}?id=${product.id}`}
                     className="text-decoration-none"
                 >
                     <Card.Img
