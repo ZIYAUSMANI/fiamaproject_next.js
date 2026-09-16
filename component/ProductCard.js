@@ -21,8 +21,7 @@ const ProductCard = ({ product }) => {
                 )}
 
                 <Link
-                    href={`${product.category}/${product.title
-                        .replace(/\s+/g, "-")}?id=${product.id}`}
+                    href={`/${product.id}`}
                     className="text-decoration-none"
                 >
                     <Card.Img

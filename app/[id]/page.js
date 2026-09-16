@@ -3,18 +3,19 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+
 
 import { getProducts } from "@/helper/Services";
 import { ConvertToCurrency } from "@/utils/utils";
 import AddToCartRedux from "@/app/cart/_component/AddTocartRedux";
 import AddToWishlistRedux from "@/app/wishlist/_component/AddToWishlistRedux";
 import BreadcrumbBanner from "@/component/BreadcrumbBanner";
+import { useParams } from "next/navigation";
 
 
 const ProductDetails = () => {
-    const searchParams = useSearchParams();
-    const productId = searchParams.get("id");
+    const params = useParams();
+    const productId = params.id;
 
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [products, setProducts] = useState([]);
@@ -46,7 +47,7 @@ const ProductDetails = () => {
 
     return (
         <Fragment>
-            <BreadcrumbBanner />
+            <BreadcrumbBanner product={activeProduct} />
             {loading ? (
                 <Container className="py-5 mt-5 text-center">
                     <Spinner size="sm" className="me-2" />

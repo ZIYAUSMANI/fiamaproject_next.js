@@ -28,7 +28,7 @@ const CategoryList = () => {
 
     return (
         <div className="category-list-wrapper py-2">
-            <h5 className="fw-bold text-dark pb-3 border-bottom">
+            <h5 className="fw-semibold text-dark pb-3 border-bottom">
                 Categories
             </h5>
 
@@ -48,8 +48,8 @@ const CategoryList = () => {
                             key={category.slug}
                             href={categoryPath}
                             className={`category-link text-decoration-none ${isActive
-                                    ? "text-primary fw-bold"
-                                    : "text-secondary"
+                                ? "text-primary fw-bold"
+                                : "text-secondary"
                                 }`}
                         >
                             {category.name}

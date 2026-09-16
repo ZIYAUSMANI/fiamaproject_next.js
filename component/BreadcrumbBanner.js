@@ -4,15 +4,17 @@ import { Container, Breadcrumb } from "react-bootstrap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const BreadcrumbBanner = () => {
+const BreadcrumbBanner = ({ product = null }) => {
     const pathname = usePathname();
-    const pathnames = pathname.split("/").filter((x) => x);
+    const pathnames = pathname.split("/").filter(Boolean);
 
-    if (pathnames.length === 0) {
+    const pageTitle = product
+        ? product.title
+        : pathnames[pathnames.length - 1]?.replace(/-/g, " ");
+
+    if (!product && pathnames.length === 0) {
         return null;
     }
-
-    const pageTitle = pathnames[pathnames.length - 1].replace(/-/g, " ");
 
     return (
         <div className="breadcrumb-banner bg-lightgray py-5 text-center">
@@ -22,40 +24,70 @@ const BreadcrumbBanner = () => {
                 </h1>
 
                 <Breadcrumb className="d-flex justify-content-center custom-breadcrumb m-0">
-                    <Breadcrumb.Item
-                        href="/"
-                        linkAs={Link}
-                        linkProps={{ href: "/" }}
-                        className="text-dark text-decoration-none"
-                    >
-                        Home
-                    </Breadcrumb.Item>
+                    {/* Home */}
+                    <li className="breadcrumb-item">
+                        <Link
+                            href="/"
+                            className="text-dark text-decoration-none"
+                        >
+                            Home
+                        </Link>
+                    </li>
 
-                    {pathnames.map((value, index) => {
-                        const href = `/${pathnames.slice(0, index + 1).join("/")}`;
-                        const isLast = index === pathnames.length - 1;
-                        const label = value.replace(/-/g, " ");
+                    {product ? (
+                        <>
+                            {/* Category */}
+                            <li className="breadcrumb-item">
+                                <Link
+                                    href={`/${product.category}`}
+                                    className="text-dark text-capitalize text-decoration-underline"
+                                >
+                                    {product.category.replace(/-/g, " ")}
+                                </Link>
+                            </li>
 
-                        return isLast ? (
-                            <Breadcrumb.Item
-                                key={href}
-                                active
-                                className="fw-semibold text-capitalize text-dark "
+                            {/* Product */}
+                            <li
+                                className="breadcrumb-item active fw-semibold text-capitalize text-dark"
+                                aria-current="page"
                             >
-                                {label}
-                            </Breadcrumb.Item>
-                        ) : (
-                            <Breadcrumb.Item
-                                key={href}
-                                href={href}
-                                linkAs={Link}
-                                linkProps={{ href }}
-                                className="text-capitalize text-dark text-decoration-underline"
-                            >
-                                {label}
-                            </Breadcrumb.Item>
-                        );
-                    })}
+                                {product.title}
+                            </li>
+                        </>
+                    ) : (
+                        pathnames.map((value, index) => {
+                            const href = `/${pathnames
+                                .slice(0, index + 1)
+                                .join("/")}`;
+
+                            const isLast =
+                                index === pathnames.length - 1;
+
+                            return (
+                                <li
+                                    key={href}
+                                    className={`breadcrumb-item ${isLast
+                                            ? "active fw-semibold text-capitalize text-dark"
+                                            : ""
+                                        }`}
+                                    aria-current={
+                                        isLast ? "page" : undefined
+                                    }
+                                >
+                                    {isLast ? (
+                                        value.replace(/-/g, " ")
+                                    ) : (
+                                        <Link
+                                            href={href}
+                                            className="text-dark text-capitalize text-decoration-underline"
+                                        >
+                                            {value.replace(/-/g, " ")}
+                                        </Link>
+                                    )}
+                                </li>
+                            );
+                        })
+                    )}
                 </Breadcrumb>
             </Container>
         </div>
