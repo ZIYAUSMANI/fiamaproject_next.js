@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, InputGroup, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
-import { Link, Trash } from 'react-bootstrap-icons';
+import { Trash } from 'react-bootstrap-icons';
 import { applyCoupon, removeCoupon } from '@/store/Slice/cartSlice';
 import { ConvertToCurrency } from '@/utils/utils';
+import Link from 'next/link';
 
 const CartTotals = () => {
 
@@ -59,7 +60,7 @@ const CartTotals = () => {
             </Row>
 
             {/* Cart Totals Section */}
-            <Row className="justify-content-end">
+            <Row className="justify-content-end ">
                 <Col md={5} lg={4}>
                     <div className="cart-totals-card">
                         <h4>Cart Totals</h4>
