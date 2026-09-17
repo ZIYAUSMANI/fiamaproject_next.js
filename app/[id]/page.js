@@ -12,6 +12,11 @@ import AddToWishlistRedux from "@/app/wishlist/_component/AddToWishlistRedux";
 import BreadcrumbBanner from "@/component/BreadcrumbBanner";
 import { useParams } from "next/navigation";
 
+export const metadata = {
+    title: "Product Details",
+    description:
+        "Explore detailed information, prices, and features of flowers, bouquets, gifts, and other products at Fiama Flower Shop.",
+};
 
 const ProductDetails = () => {
     const params = useParams();

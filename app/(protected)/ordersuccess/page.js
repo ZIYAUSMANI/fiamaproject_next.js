@@ -6,7 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { ConvertToCurrency } from "@/utils/utils";
 import { clearCart } from "@/store/Slice/cartSlice";
-
+export const metadata = {
+    title: "Order Success",
+    description:
+        "Your order has been placed successfully at Fiama Flower Shop. Thank you for shopping with us.",
+};
 
 const OrderSuccess = () => {
     const cartState = useSelector((state) => state.cart);

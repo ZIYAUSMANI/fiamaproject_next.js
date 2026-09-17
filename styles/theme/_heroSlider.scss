@@ -215,3 +215,13 @@
         }
     }
 }
+
+.hero-slide {
+    position: relative;
+    min-height: 600px;
+}
+
+.hero-slide img {
+    object-fit: cover;
+    z-index: 0;
+}

@@ -11,15 +11,19 @@
         .breadcrumb-item {
             font-family: $font-family-base;
             font-size: $font-size-base;
+            letter-spacing: -0.5px;
 
-            a {
-                color: $gray-900;
+            a,
+            a.text-dark {
+                color: $gray-900 !important;
                 text-decoration: none;
                 transition: $transition-base;
+            }
 
-                &:hover {
-                    color: $primary;
-                }
+            a:hover,
+            a.text-dark:hover {
+                color: $primary !important;
+
             }
 
             // Bold active item label explicitly

@@ -22,7 +22,11 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getOrderById } from "@/helper/Services";
 import { ConvertToCurrency } from "@/utils/utils";
-
+export const metadata = {
+    title: "Order Details",
+    description:
+        "View your order information, purchased products, quantities, prices, and delivery details at Fiama Flower Shop.",
+};
 const OrderDetails = () => {
     const { id } = useParams();
 

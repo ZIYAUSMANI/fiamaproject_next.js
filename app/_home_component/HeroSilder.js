@@ -19,14 +19,14 @@ const HeroSlider = () => {
                 className="hero-carousel"
             >
                 {slideData.map((slide) => (
-                    <Carousel.Item key={slide.id} className="position-relative">
+                    <Carousel.Item key={slide.id} className="position-relative  hero-slide">
                         <Image
                             src={slide.image}
                             alt={slide.imageAlt}
                             fill
                             priority={slide.id === 1}
                             sizes="100vw"
-                            className="d-block w-100 position-absolute top-0 start-0 h-100 object-fit-cover"
+                            className="d-block w-100 object-fit-cover   "
                         />
 
                         <div className="slider-inner position-relative z-1">

@@ -3,7 +3,11 @@ import ProductGridWithPagination from "./_component/ProductGridWithPagination";
 import CategoryList from "./_component/CategoryList";
 import { Col, Container, Row } from "react-bootstrap";
 
-
+export const metadata = {
+    title: "Shop",
+    description:
+        "Explore beautiful flowers, bouquets, gifts, and floral arrangements at Fiama Flower Shop.",
+};
 export default function ShopPage() {
     return (
         <>

@@ -67,8 +67,8 @@ const BreadcrumbBanner = ({ product = null }) => {
                                 <li
                                     key={href}
                                     className={`breadcrumb-item ${isLast
-                                            ? "active fw-semibold text-capitalize text-dark"
-                                            : ""
+                                        ? "active fw-semibold text-capitalize text-dark"
+                                        : ""
                                         }`}
                                     aria-current={
                                         isLast ? "page" : undefined

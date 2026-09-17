@@ -15,6 +15,12 @@ import CheckoutCouponSection from "./_component/CheckoutCouponSection";
 import BillingDetails from "./_component/BillingDetails";
 import PaymentSection from "./_component/PaymentSection";
 
+export const metadata = {
+    title: "Checkout",
+    description:
+        "Complete your order securely and purchase your favorite flowers, bouquets, and gifts from Fiama Flower Shop.",
+};
+
 function CheckOut() {
     const router = useRouter();
     const cartState = useSelector((state) => state.cart);
