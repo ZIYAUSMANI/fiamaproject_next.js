@@ -10,9 +10,9 @@ import {
 } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { toast, ToastContainer } from "react-toastify";
+import { toast, } from "react-toastify";
 import formValidationSchema from "@/FromSchema/formValidationSchema";
-import { getUserById } from "@/helper/Services";
+import { getUserById, updateUser } from "@/helper/Services";
 
 const AccountDetailsForm = ({ onUserUpdated }) => {
     const {
@@ -67,9 +67,7 @@ const AccountDetailsForm = ({ onUserUpdated }) => {
     const modifyUser = async (data) => {
         try {
             await updateUser(data);
-
             toast.success("User updated successfully!");
-
             if (onUserUpdated) {
                 await onUserUpdated();
             }
@@ -166,7 +164,6 @@ const AccountDetailsForm = ({ onUserUpdated }) => {
                 </Button>
             </Container>
 
-            <ToastContainer />
         </Form>
     );
 };

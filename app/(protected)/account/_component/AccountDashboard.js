@@ -46,7 +46,7 @@ const AccountDashboard = () => {
                 return;
             }
             const response = await getUserById(id);
-            setUser(response.data[0]);
+            setUser(response?.data[0]);
         } catch (error) {
             toast.error("Something went wrong");
         }
@@ -57,14 +57,14 @@ const AccountDashboard = () => {
             const userId = localStorage.getItem("id");
 
             if (!userId) {
+                setOrders([]);
                 return;
             }
 
             setLoadingOrders(true);
 
-            const response = await getOrdersByUserId(userId);
-
-            setOrders(response.data || []);
+            const orders = await getOrdersByUserId(userId);
+            setOrders(orders);
         } catch (error) {
             console.error("Error fetching orders:", error);
             toast.error("Unable to load orders.");
@@ -202,7 +202,7 @@ const AccountDashboard = () => {
                                             </td>
                                         </tr>
                                     ) : (
-                                        orders.map((order) => (
+                                        orders?.map((order) => (
                                             <tr
                                                 key={order.id}
                                                 className="border-bottom"

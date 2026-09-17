@@ -7,7 +7,7 @@ export const NAV_ITEMS = [
     {
         id: "products",
         title: "PRODUCTS",
-        to: "/1",
+        to: "/productdetail/1",
     },
     {
         id: "shop",

@@ -99,7 +99,7 @@ function CheckOut() {
         try {
             const response = await createOrder(orderData);
 
-            console.log("Order Created:", response.data);
+            console.log("Order Created:", response?.data);
 
             reset();
 
@@ -179,7 +179,7 @@ function CheckOut() {
 
                 const response = await getUserById(userId);
 
-                const user = response.data?.[0];
+                const user = response?.data?.[0];
 
                 if (!user) {
                     toast.error("User details not found.");

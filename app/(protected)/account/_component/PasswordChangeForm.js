@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import { Form, Button, Card, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { toast, ToastContainer } from "react-toastify";
+import { toast, } from "react-toastify";
 import { useRouter } from "next/navigation";
 import formValidationSchema from "@/FromSchema/formValidationSchema";
-import { getUserById } from "@/helper/Services";
+import { getUserById, updateUser } from "@/helper/Services";
 
 const PasswordChangeForm = () => {
     const [user, setUser] = useState(null);
@@ -177,7 +177,7 @@ const PasswordChangeForm = () => {
                 </Card>
             </Form>
 
-            <ToastContainer />
+
         </div>
     );
 };

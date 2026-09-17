@@ -15,7 +15,7 @@ function NewItem() {
         const fetchProducts = async () => {
             try {
                 const data = await getProducts();
-                setProducts(data.products);
+                setProducts(data?.products);
             } catch (error) {
                 setError(error);
             } finally {
@@ -46,7 +46,7 @@ function NewItem() {
 
                 {!loading && !error && (
                     <Row className="gx-5 gy-3">
-                        {products.slice(0, 8).map((item) => (
+                        {products?.slice(0, 8).map((item) => (
                             <Col key={item.id} xs={12} sm={6} md={4} lg={3}>
                                 <ProductCard product={item} />
                             </Col>

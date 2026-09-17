@@ -17,7 +17,7 @@ function TopProduct() {
         const fetchProducts = async () => {
             try {
                 const data = await getProducts();
-                setProducts(data.products);
+                setProducts(data?.products);
             } catch (error) {
                 setError(error);
             } finally {
@@ -86,7 +86,7 @@ function TopProduct() {
                         interval={null}
                         className="product-carousel px-3 px-sm-0"
                     >
-                        {productSlides.map((slideProducts, slideIndex) => (
+                        {productSlides?.map((slideProducts, slideIndex) => (
                             <Carousel.Item key={slideIndex}>
                                 <Row className="gx-4">
                                     {slideProducts.map((item) => (

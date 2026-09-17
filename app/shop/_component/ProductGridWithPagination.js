@@ -30,7 +30,7 @@ function ProductGridWithPagination() {
                 } else {
                     data = await getProducts();
                 }
-                setListProducts(data.products);
+                setListProducts(data?.products);
                 setCurrentPage(1);
 
             } catch (error) {

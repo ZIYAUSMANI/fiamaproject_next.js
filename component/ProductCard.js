@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
                 )}
 
                 <Link
-                    href={`/${product.id}`}
+                    href={`/productdetail/${product.id}`}
                     className="text-decoration-none"
                 >
                     <Card.Img

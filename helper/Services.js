@@ -8,6 +8,7 @@ const mockApi = axios.create({
     baseURL: process.env.NEXT_PUBLIC_MOCKAPI_BASEURL,
 });
 
+
 export const getProductsByCategory = async (category) => {
     const response = await api.get(`/products/category/${category}`);
     return response.data;
@@ -44,7 +45,18 @@ export const createOrder = async (data) => {
 };
 
 export const getOrdersByUserId = async (userId) => {
-    return await mockApi.get(`/ordersDetail?UserId=${userId}`);
+    try {
+        const response = await mockApi.get(`/ordersDetail?UserId=${userId}`
+        );
+
+        return response.data || [];
+    } catch (error) {
+        if (error.response?.status === 404) {
+            return [];
+        }
+
+        throw error;
+    }
 };
 
 export const getOrderById = async (id) => {
