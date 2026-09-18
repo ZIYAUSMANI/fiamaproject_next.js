@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Form, Button, Card, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { toast, } from "react-toastify";
+import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import formValidationSchema from "@/FromSchema/formValidationSchema";
-import { getUserById, updateUser } from "@/helper/Services";
+import { updateUser } from "@/helper/Services";
 
-const PasswordChangeForm = () => {
-    const [user, setUser] = useState(null);
+const PasswordChangeForm = ({ user }) => {
     const router = useRouter();
 
     const defaultFormValues = {
@@ -35,35 +34,6 @@ const PasswordChangeForm = () => {
         ),
         mode: "onSubmit",
     });
-
-    const fetchUser = async () => {
-        try {
-            const id = localStorage.getItem("id");
-
-            if (!id) {
-                toast.error("User not found");
-                return;
-            }
-
-            const response = await getUserById(id);
-            const currentUser = response?.data?.[0];
-
-            if (!currentUser) {
-                toast.error("User not found");
-                return;
-            }
-
-            console.log("User:", currentUser);
-            setUser(currentUser);
-        } catch (error) {
-            console.error(error);
-            toast.error("Something went wrong while fetching user");
-        }
-    };
-
-    useEffect(() => {
-        fetchUser();
-    }, []);
 
     const onSubmit = async (data) => {
         try {
@@ -95,6 +65,7 @@ const PasswordChangeForm = () => {
             toast.success("Password changed successfully");
 
             router.push("/login");
+
         } catch (error) {
             console.error(error);
             toast.error("Something went wrong");
@@ -105,14 +76,18 @@ const PasswordChangeForm = () => {
         <div className="py-4">
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Card className="p-4 border-0 shadow-sm rounded-0 mb-4 bg-white">
+
                     <h5 className="fw-normal mb-4 text-dark text-uppercase">
                         Password Change
                     </h5>
 
                     <Row className="g-4">
+
                         <Col md={12}>
                             <Form.Group controlId="currentPassword">
-                                <Form.Label>Current password:</Form.Label>
+                                <Form.Label>
+                                    Current password:
+                                </Form.Label>
 
                                 <Form.Control
                                     type="password"
@@ -129,7 +104,9 @@ const PasswordChangeForm = () => {
 
                         <Col md={12}>
                             <Form.Group controlId="newPassword">
-                                <Form.Label>New password:</Form.Label>
+                                <Form.Label>
+                                    New password:
+                                </Form.Label>
 
                                 <Form.Control
                                     type="password"
@@ -146,7 +123,9 @@ const PasswordChangeForm = () => {
 
                         <Col md={12}>
                             <Form.Group controlId="confirmPassword">
-                                <Form.Label>Confirm new password:</Form.Label>
+                                <Form.Label>
+                                    Confirm new password:
+                                </Form.Label>
 
                                 <Form.Control
                                     type="password"
@@ -173,11 +152,10 @@ const PasswordChangeForm = () => {
                                     : "CHANGE PASSWORD"}
                             </Button>
                         </Col>
+
                     </Row>
                 </Card>
             </Form>
-
-
         </div>
     );
 };

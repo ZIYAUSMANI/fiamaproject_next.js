@@ -248,7 +248,7 @@ const AccountDashboard = () => {
                     {activeTab === "account-details" && (
                         <div className="p-4 bg-light">
                             <AccountDetailsForm onUserUpdated={fetchUser} />
-                            <PasswordChangeForm />
+                            <PasswordChangeForm user={user} />
                         </div>
                     )}
                 </Col>
