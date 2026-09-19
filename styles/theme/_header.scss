@@ -1,7 +1,13 @@
 @import "variables";
 
+
+/* ==========================================
+   FIAMA HEADER
+   ========================================== */
+
 .fiama-header {
-    background-color: $white;
+    background-color: var(--body-bg);
+    color: var(--body-color);
 
     .phone-title {
         font-size: 0.85rem;
@@ -12,29 +18,42 @@
     .phone-number {
         font-size: 0.9rem;
         line-height: 1.2;
+        color: var(--body-color) !important;
     }
 
 
+    /* ==========================================
+       SEARCH BAR
+       ========================================== */
+
     .search-input-group {
-        border: 1px solid #e2e8f0;
+        border: 1px solid var(--border-color);
         border-radius: 50px;
         overflow: hidden;
         padding: 2px 8px;
         transition: $transition-base;
+        background-color: var(--input-bg);
 
         &:focus-within {
-            border-color: $primary;
-            box-shadow: 0 0 0 1px $primary;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 1px var(--primary);
         }
 
         .search-input {
             border: none;
             font-size: 0.9rem;
             padding-left: 15px;
-            color: $gray-700;
+            color: var(--gray-700);
+            background-color: var(--input-bg);
 
             &::placeholder {
-                color: $secondary;
+                color: var(--secondary);
+            }
+
+            &:focus {
+                background-color: var(--input-bg);
+                color: var(--gray-700);
+                box-shadow: none;
             }
         }
 
@@ -42,14 +61,20 @@
             border: none;
             cursor: pointer;
             padding-right: 15px;
+            color: var(--heading-color) !important;
         }
     }
 
 
+    /* ==========================================
+       CART ICON
+       ========================================== */
+
     .cart-icon-wrapper {
+
         .bg-pink {
-            background-color: $primary !important;
-            color: $white;
+            background-color: var(--primary) !important;
+            color: var(--white);
         }
 
         .cart-badge {
@@ -64,75 +89,320 @@
     }
 
 
+    /* ==========================================
+       CART WIDGET
+       ========================================== */
+
     .cart-widget {
+
         .cart-title {
             font-size: 0.75rem;
             line-height: 1;
+            color: var(--body-color);
         }
 
         .cart-price {
             font-size: 0.85rem;
-            color: $primary;
+            color: var(--primary);
             font-weight: 500;
+        }
+    }
+
+
+    /* ==========================================
+       HEADER ICONS
+       ========================================== */
+
+    .phone-icon-wrapper {
+        color: var(--heading-color);
+    }
+
+    .header-icon {
+        color: var(--heading-color) !important;
+    }
+
+    .mobile-menu-trigger {
+        color: var(--heading-color);
+
+        svg {
+            color: var(--heading-color);
         }
     }
 }
 
+
+/* ==========================================
+   CART OFFCANVAS
+   ========================================== */
+
 .cart-offcanvas {
+
+    background-color: var(--body-bg);
+    color: var(--body-color);
+
     .overflow-auto {
         max-height: 320px;
         padding-right: 8px;
-
 
         &::-webkit-scrollbar {
             width: 2px;
         }
 
         &::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: var(--gray-100);
             border-radius: 2px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background: #ccc;
+            background: var(--gray-400);
             border-radius: 2px;
 
             &:hover {
-                background: #999;
+                background: var(--gray-500);
             }
         }
 
-
         scrollbar-width: thin;
-        scrollbar-color: #ccc #f1f1f1;
+        scrollbar-color: var(--gray-400) var(--gray-100);
+    }
+
+
+    /* Cart text */
+
+    .cart-title {
+        color: var(--body-color);
+    }
+
+    .cart-price {
+        color: var(--primary);
+    }
+
+
+    /* Cart headings */
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--heading-color);
+    }
+
+
+    /* Cart buttons */
+
+    .btn-close {
+        filter: var(--bs-btn-close-filter);
     }
 }
+
+
+/* ==========================================
+   MOBILE MENU OFFCANVAS
+   ========================================== */
 
 .mobile-menu-offcanvas {
 
+    background-color: var(--body-bg);
+    color: var(--body-color);
+
+
     .mobile-nav-item {
-        color: $gray-700 !important;
+        color: var(--gray-700) !important;
         transition: color 0.3s ease;
 
         &:hover {
-            color: $primary !important;
+            color: var(--primary) !important;
         }
-
     }
 
+
     /* Account links hover */
+
     .user-links-section {
+
         a {
+            color: var(--body-color);
+
             transition: color 0.3s ease;
 
             &:hover {
-                color: $primary !important;
+                color: var(--primary) !important;
             }
         }
     }
+
+
+    /* Mobile menu headings */
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--heading-color);
+    }
+
+
+    /* Mobile menu buttons */
+
+    .accordion-button {
+        color: var(--heading-color);
+        background-color: var(--body-bg);
+    }
+
+    .accordion-body {
+        background-color: var(--body-bg);
+        color: var(--body-color);
+    }
 }
+
+
+/* ==========================================
+   FIAMA LOGO
+   ========================================== */
 
 .fiama-logo {
     width: 150px;
     height: auto;
+}
+
+
+/* ==========================================
+   DARK MODE
+   ========================================== */
+
+[data-bs-theme="dark"] {
+
+    .fiama-header {
+        background-color: var(--body-bg);
+        border-color: var(--border-color) !important;
+    }
+
+
+    /* Header text */
+
+    .phone-title {
+        color: var(--gray-600) !important;
+    }
+
+    .phone-number {
+        color: var(--gray-700) !important;
+    }
+
+
+    /* Header icons */
+
+    .phone-icon-wrapper,
+    .header-icon,
+    .mobile-menu-trigger {
+        color: var(--heading-color) !important;
+    }
+
+
+    /* Search */
+
+    .search-input-group {
+        background-color: var(--input-bg);
+        border-color: var(--border-color);
+
+        .search-input {
+            background-color: var(--input-bg);
+            color: var(--gray-700);
+
+            &::placeholder {
+                color: var(--gray-600);
+            }
+        }
+
+        .search-icon-btn {
+            color: var(--heading-color) !important;
+        }
+    }
+
+
+    /* Cart */
+
+    .cart-widget {
+
+        .cart-title {
+            color: var(--gray-600) !important;
+        }
+
+        .cart-price {
+            color: var(--primary) !important;
+        }
+    }
+
+
+    /* Cart badge */
+
+    .cart-icon-wrapper {
+
+        .bg-pink {
+            background-color: var(--primary) !important;
+            color: var(--white) !important;
+        }
+    }
+
+
+    /* Mobile menu */
+
+    .mobile-menu-offcanvas {
+
+        .mobile-nav-item {
+            color: var(--gray-700) !important;
+
+            &:hover {
+                color: var(--primary) !important;
+            }
+        }
+
+        .user-links-section {
+
+            a {
+                color: var(--body-color) !important;
+
+                &:hover {
+                    color: var(--primary) !important;
+                }
+            }
+        }
+    }
+
+
+    /* Cart offcanvas */
+
+    .cart-offcanvas {
+        background-color: var(--body-bg);
+        color: var(--body-color);
+
+        .cart-title {
+            color: var(--gray-700) !important;
+        }
+
+        .cart-price {
+            color: var(--primary) !important;
+        }
+    }
+}
+
+
+/* ==========================================
+   TRANSITIONS
+   ========================================== */
+
+.fiama-header,
+.cart-offcanvas,
+.mobile-menu-offcanvas,
+.search-input-group,
+.search-input,
+.cart-widget,
+.mobile-nav-item {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
 }

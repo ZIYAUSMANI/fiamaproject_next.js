@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import Image from "next/image";
 
 import {
@@ -11,7 +11,8 @@ import {
     Offcanvas,
     Button,
     CloseButton,
-    Accordion
+    Accordion,
+    Badge
 } from 'react-bootstrap';
 import Link from 'next/link';
 import { FiSearch, FiMenu } from 'react-icons/fi';
@@ -21,6 +22,7 @@ import { NAV_ITEMS } from '@/data/Navigationdata';
 import { removeFromCart } from '@/store/Slice/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { ConvertToCurrency } from '@/utils/utils';
+import { Moon, Sun } from 'react-bootstrap-icons';
 
 /*import image1 from "../assets/image/1.webp";
 import image2 from "../assets/image/2.webp";
@@ -54,6 +56,9 @@ export default function Header() {
     const handleOpenMenu = () => setShowMenu(true);
     const [showCart, setShowCart] = useState(false);
 
+    const [darkMode, setDarkMode] = useState(false);
+    const [themeLoaded, setThemeLoaded] = useState(false);
+
 
     const handleCloseCart = () => setShowCart(false);
     const handleOpenCart = (e) => {
@@ -61,6 +66,36 @@ export default function Header() {
         setShowCart(true);
     };
 
+    const handleThemeMode = () => {
+        setDarkMode((prev) => !prev);
+    };
+
+    useEffect(() => {
+        const savedDarkMode = localStorage.getItem("dark");
+
+        if (savedDarkMode === "true") {
+            setDarkMode(true);
+        } else {
+            setDarkMode(false);
+        }
+
+        setThemeLoaded(true);
+    }, []);
+
+    useEffect(() => {
+        if (!themeLoaded) return;
+
+        localStorage.setItem("dark", darkMode ? "true" : "false");
+
+        const htmlElement = document.querySelector("html");
+
+        if (htmlElement) {
+            htmlElement.setAttribute(
+                "data-bs-theme",
+                darkMode ? "dark" : "light"
+            );
+        }
+    }, [darkMode, themeLoaded]);
 
 
 
@@ -154,6 +189,14 @@ export default function Header() {
                                     </span>
                                 </div>
                             </Link>
+                            <Badge
+                                onClick={handleThemeMode}
+                                className={`theme-change-btn me-2 rounded-circle p-1 
+    ${darkMode ? "bg-white text-dark" : "bg-dark text-light"}`}
+                                role="button"
+                            >
+                                {darkMode ? <Sun size={18} /> : <Moon size={18} color="white" />}
+                            </Badge>
 
                             {/* Menu Offcanvas Trigger (Visible on all breakpoints now) */}
                             <div

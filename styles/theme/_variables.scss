@@ -1,131 +1,273 @@
-        // ==========================================
-        // 1. BRAND & THEME COLORS
-        // ==========================================
-        $primary: #E55472;
-        $secondary: #111111;
-        $accent: #9AC45C;
-        $info: #2F80ED;
-        $warning: #FFB800;
-        $danger: #EB5757;
+// ==========================================
+// 1. BRAND & THEME COLORS
+// ==========================================
 
-        $white: #ffffff;
-        $gray-100: #f8f9fa;
-        $gray-200: #f3f3f3;
-        $gray-300: #F0F0F0;
-        $gray-400: #cccccc;
-        $gray-500: #999999;
-        $gray-600: #666666;
-        $gray-700: #555555;
-        $gray-800: #272829;
-        $gray-900: #111111;
+// Light Theme
+$primary: #E55472;
+$secondary: #111111;
+$accent: #9AC45C;
+$info: #2F80ED;
+$warning: #FFB800;
+$danger: #EB5757;
 
-
-        $body-bg: $white;
-        $body-color: $gray-700;
-        $heading-color: $gray-900;
-        $border-color: $gray-300;
-        $input-bg: $white;
-        $input-border-color: $gray-300;
-
-        $theme-colors: (
-            "primary": $primary,
-            "secondary": $secondary,
-            "success": $accent,
-            // you can map green here
-            "info": $info,
-            "warning": $warning,
-            "danger": $danger,
-            "light": $gray-100,
-            "dark": $gray-900,
-            "gray":$gray-600,
-            "moregray":$gray-700,
-            "lightgray":$gray-300,
-
-        );
+$white: #ffffff;
+$gray-100: #f8f9fa;
+$gray-200: #f3f3f3;
+$gray-300: #F0F0F0;
+$gray-400: #cccccc;
+$gray-500: #999999;
+$gray-600: #666666;
+$gray-700: #555555;
+$gray-800: #272829;
+$gray-900: #111111;
 
 
-        // ==========================================
-        // 2. TYPOGRAPHY
-        // ==========================================
-        $font-family-sans-serif: var(--font-montserrat), sans-serif;
-        $font-family-heading: var(--font-montserrat), sans-serif;
-        $font-family-base: $font-family-sans-serif;
+// ==========================================
+// DARK THEME COLORS
+// ==========================================
 
-        $font-size-root: 16px;
-        $font-size-base: 1rem;
-        $font-size-lg: 1.125rem;
-        $font-size-sm: 0.875rem;
-        $font-size-xs: 0.75rem;
+$dark-primary: #ff718d;
+$dark-secondary: #ffffff;
+$dark-accent: #b5d878;
+$dark-info: #5c9df5;
+$dark-warning: #ffc84d;
+$dark-danger: #ff7373;
 
-        $font-weight-light: 300;
-        $font-weight-normal: 400;
-        $font-weight-medium: 500;
-        $font-weight-semibold: 600;
-        $font-weight-bold: 700;
-        $font-weight-bolder: 900;
-        $line-height-base: 1.7;
-        $line-height-heading: 1.25;
-
-
-        // ==========================================
-        // 3. SPACING & LAYOUT
-        // ==========================================
-        $spacer: 1rem;
-        $spacers: (
-            0: 0,
-            1: $spacer * 0.25,
-            2: $spacer * 0.5,
-            3: $spacer,
-            4: $spacer * 1.5,
-            5: $spacer * 3,
-            6: $spacer * 5
-        );
-
-        $container-max-width: 1200px;
-        $grid-gutter-width: 30px;
+$dark-white: #ffffff;
+$dark-gray-100: #2b2b2b;
+$dark-gray-200: #343434;
+$dark-gray-300: #444444;
+$dark-gray-400: #555555;
+$dark-gray-500: #747373;
+$dark-gray-600: #999999;
+$dark-gray-700: #aaaaaa;
+$dark-gray-800: #cccccc;
+$dark-gray-900: #ffffff;
 
 
-        // ==========================================
-        // 4. BORDERS & RADIUS
-        // ==========================================
-        $border-width: 1px;
-        $border-style: solid;
+// ==========================================
+// DEFAULT BODY COLORS
+// ==========================================
 
-        $border-radius-none: 0;
-        $border-radius-sm: 3px;
-        $border-radius: 5px;
-        $border-radius-lg: 10px;
-        $border-radius-pill: 50px;
-
-
-        // ==========================================
-        // 5. SHADOWS & TRANSITIONS
-        // ==========================================
-        $box-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-        $box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        $box-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
-
-        $transition-speed: 0.3s;
-        $transition-fn: ease-in-out;
-        $transition-base: all $transition-speed $transition-fn;
+$body-bg: $white;
+$body-color: $gray-700;
+$heading-color: $gray-900;
+$border-color: $gray-300;
+$input-bg: $white;
+$input-border-color: $gray-300;
 
 
-        // ==========================================
-        // 6. BUTTON SPECIFICATIONS
-        // ==========================================
-        $btn-padding-y: 14px;
-        $btn-padding-x: 35px;
-        $btn-font-size: 0.875rem;
-        $btn-font-weight: $font-weight-medium;
-        $btn-line-height: 1;
-        $btn-border-radius: $border-radius-none;
-        $btn-letter-spacing: 1px;
-        $btn-text-transform: uppercase;
+// ==========================================
+// BOOTSTRAP THEME COLORS
+// ==========================================
 
-        .category-link:hover {
-            color: var(--bs-primary) !important;
-        }
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $accent,
+    // you can map green here
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $gray-100,
+    "dark": $gray-900,
+    "gray": $gray-600,
+    "moregray": $gray-700,
+    "lightgray": $gray-300,
+);
 
-        body {
-            font-family: var(--font-montserrat), sans-serif;
-        }
+
+// ==========================================
+// CSS VARIABLES - LIGHT THEME
+// ==========================================
+
+:root {
+    --primary: #{$primary};
+    --secondary: #{$secondary};
+    --accent: #{$accent};
+    --info: #{$info};
+    --warning: #{$warning};
+    --danger: #{$danger};
+
+    --white: #{$white};
+
+    --gray-100: #{$gray-100};
+    --gray-200: #{$gray-200};
+    --gray-300: #{$gray-300};
+    --gray-400: #{$gray-400};
+    --gray-500: #{$gray-500};
+    --gray-600: #{$gray-600};
+    --gray-700: #{$gray-700};
+    --gray-800: #{$gray-800};
+    --gray-900: #{$gray-900};
+
+    --body-bg: #{$body-bg};
+    --body-color: #{$body-color};
+    --heading-color: #{$heading-color};
+    --border-color: #{$border-color};
+    --input-bg: #{$input-bg};
+    --input-border-color: #{$input-border-color};
+}
+
+
+// ==========================================
+// DARK THEME
+// ==========================================
+
+[data-bs-theme="dark"] {
+
+    --primary: #{$dark-primary};
+    --secondary: #{$dark-secondary};
+    --accent: #{$dark-accent};
+    --info: #{$dark-info};
+    --warning: #{$dark-warning};
+    --danger: #{$dark-danger};
+
+    --white: #{$dark-white};
+
+    --gray-100: #{$dark-gray-100};
+    --gray-200: #{$dark-gray-200};
+    --gray-300: #{$dark-gray-300};
+    --gray-400: #{$dark-gray-400};
+    --gray-500: #{$dark-gray-500};
+    --gray-600: #{$dark-gray-600};
+    --gray-700: #{$dark-gray-700};
+    --gray-800: #{$dark-gray-800};
+    --gray-900: #{$dark-gray-900};
+
+    --body-bg: #{$dark-gray-100};
+    --body-color: #{$dark-gray-700};
+    --heading-color: #{$dark-gray-900};
+    --border-color: #{$dark-gray-300};
+    --input-bg: #{$dark-gray-100};
+    --input-border-color: #{$dark-gray-300};
+}
+
+
+// ==========================================
+// BOOTSTRAP DARK MODE VARIABLES
+// ==========================================
+
+[data-bs-theme="dark"] {
+
+    --bs-primary: var(--primary);
+    --bs-secondary: var(--secondary);
+
+    --bs-success: var(--accent);
+    --bs-info: var(--info);
+    --bs-warning: var(--warning);
+    --bs-danger: var(--danger);
+
+    --bs-light: var(--gray-100);
+    --bs-dark: var(--gray-900);
+
+    --bs-body-bg: var(--body-bg);
+    --bs-body-color: var(--body-color);
+
+    --bs-border-color: var(--border-color);
+
+    --bs-heading-color: var(--heading-color);
+
+    --bs-tertiary-bg: var(--gray-200);
+}
+
+
+// ==========================================
+// 2. TYPOGRAPHY
+// ==========================================
+
+$font-family-sans-serif: var(--font-montserrat), sans-serif;
+$font-family-heading: var(--font-montserrat), sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+$font-size-root: 16px;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-sm: 0.875rem;
+$font-size-xs: 0.75rem;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-bolder: 900;
+
+$line-height-base: 1.7;
+$line-height-heading: 1.25;
+
+
+// ==========================================
+// 3. SPACING & LAYOUT
+// ==========================================
+
+$spacer: 1rem;
+
+$spacers: (
+    0: 0,
+    1: $spacer * 0.25,
+    2: $spacer * 0.5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3,
+    6: $spacer * 5
+);
+
+$container-max-width: 1200px;
+$grid-gutter-width: 30px;
+
+
+// ==========================================
+// 4. BORDERS & RADIUS
+// ==========================================
+
+$border-width: 1px;
+$border-style: solid;
+
+$border-radius-none: 0;
+$border-radius-sm: 3px;
+$border-radius: 5px;
+$border-radius-lg: 10px;
+$border-radius-pill: 50px;
+
+
+// ==========================================
+// 5. SHADOWS & TRANSITIONS
+// ==========================================
+
+$box-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+$box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+$box-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+
+$transition-speed: 0.3s;
+$transition-fn: ease-in-out;
+$transition-base: all $transition-speed $transition-fn;
+
+
+// ==========================================
+// 6. BUTTON SPECIFICATIONS
+// ==========================================
+
+$btn-padding-y: 14px;
+$btn-padding-x: 35px;
+$btn-font-size: 0.875rem;
+$btn-font-weight: $font-weight-medium;
+$btn-line-height: 1;
+$btn-border-radius: $border-radius-none;
+$btn-letter-spacing: 1px;
+$btn-text-transform: uppercase;
+
+
+// ==========================================
+// 7. GLOBAL STYLES
+// ==========================================
+
+.category-link:hover {
+    color: var(--bs-primary) !important;
+}
+
+body {
+    font-family: var(--font-montserrat), sans-serif;
+    background-color: var(--body-bg);
+    color: var(--body-color);
+}
