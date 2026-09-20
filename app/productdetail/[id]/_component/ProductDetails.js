@@ -5,40 +5,45 @@ import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Link from "next/link";
 
 
-import { getProducts } from "@/helper/Services";
 import { ConvertToCurrency } from "@/utils/utils";
 import AddToCartRedux from "@/app/cart/_component/AddTocartRedux";
 import AddToWishlistRedux from "@/app/wishlist/_component/AddToWishlistRedux";
 import BreadcrumbBanner from "@/component/BreadcrumbBanner";
 import { useParams } from "next/navigation";
+import { getProductById } from "@/helper/Services";
 
 const ProductDetails = () => {
     const params = useParams();
     const productId = params.id;
 
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-    const [products, setProducts] = useState([]);
+    const [activeProduct, setActiveProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchProducts = async () => {
+        const fetchProduct = async () => {
             try {
-                const data = await getProducts();
-                setProducts(data.products || []);
+                setLoading(true);
+                setError(null);
+
+                const data = await getProductById(productId);
+                setActiveProduct(data);
             } catch (error) {
-                setError(error);
+                if (error.response?.status === 404) {
+                    setActiveProduct(null);
+                } else {
+                    setError(error);
+                }
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchProducts();
-    }, []);
-
-    const activeProduct = products.find(
-        (product) => String(product.id) === String(productId)
-    );
+        if (productId) {
+            fetchProduct();
+        }
+    }, [productId]);
 
     const selectedImage =
         activeProduct?.images?.[selectedImageIndex] ||
@@ -47,10 +52,11 @@ const ProductDetails = () => {
     return (
         <Fragment>
             <BreadcrumbBanner product={activeProduct} />
+
             {loading ? (
                 <Container className="py-5 mt-5 text-center">
                     <Spinner size="sm" className="me-2" />
-                    Please wait, products are on the way...
+                    Please wait, product is on the way...
                 </Container>
             ) : error ? (
                 <Container className="py-5 mt-5">
@@ -150,7 +156,9 @@ const ProductDetails = () => {
 
                                 <div className="product-meta text-secondary fs-6 border-top pt-3">
                                     <div className="d-flex mb-1 gap-3">
-                                        <span className="meta-label">SKU:</span>
+                                        <span className="meta-label">
+                                            SKU:
+                                        </span>
 
                                         <span className="meta-value">
                                             {activeProduct.sku}
