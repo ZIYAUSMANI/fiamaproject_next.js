@@ -299,7 +299,6 @@ body {
     }
 }
 
-
 // ==========================================
 // CATEGORY LINKS
 // ==========================================
@@ -309,6 +308,12 @@ body {
     transition: $transition-base;
 
     &:hover {
+        color: var(--bs-primary) !important;
+    }
+
+    // Active category
+    &.active,
+    &.text-primary {
         color: var(--bs-primary) !important;
     }
 }
@@ -323,6 +328,12 @@ body {
         color: var(--gray-800) !important;
 
         &:hover {
+            color: var(--bs-primary) !important;
+        }
+
+        // Active category in dark mode
+        &.active,
+        &.text-primary {
             color: var(--bs-primary) !important;
         }
     }

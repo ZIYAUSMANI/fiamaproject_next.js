@@ -22,9 +22,11 @@ export default async function CategoryShopPage({ params }) {
 
                     <Col lg={9} order="1" className="order-lg-2">
                         <Suspense fallback={null}>
-                            <ProductGridWithPagination />
+                            <ProductGridWithPagination slug={slug} />
                         </Suspense>
+
                     </Col>
+
 
                     <Col lg={3} order="2" className="order-lg-1">
                         <Suspense fallback={null}>
