@@ -16,7 +16,12 @@ const PaymentSection = ({ onPlaceOrder }) => {
         dispatch(removeCoupon());
     };
 
+    const isCartEmpty =
+        !Array.isArray(cartState.cartItems) ||
+        cartState.cartItems.length === 0;
+
     return (
+
         <div className="payment-section-wrapper py-5">
             <Row className="gap-5 justify-content-between">
                 <Col lg={6}>
@@ -54,65 +59,83 @@ const PaymentSection = ({ onPlaceOrder }) => {
                         PLACE ORDER
                     </Button>
                 </Col>
-
                 <Col lg={5}>
-                    <h2 className="section-title">
-                        Cart Totals
-                    </h2>
+                    {isCartEmpty ? (
+                        <div className="py-4 text-center mt-5">
+                            <p className="mb-3 fw-semibold fs-5 text-danger">
+                                No Item In Your Cart
+                            </p>
 
-                    <table className="cart-totals-table">
-                        <tbody>
-                            <tr>
-                                <td>Total items</td>
-                                <td>{cartState.totalQuantities}</td>
-                            </tr>
+                            <Button
+                                variant="primary"
+                                href="/shop"
+                                className="btn-primary"
+                            >
+                                ADD ITEM
+                            </Button>
+                        </div>
+                    ) : (
+                        <div>
+                            <h2 className="section-title">
+                                Cart Totals
+                            </h2>
 
-                            <tr>
-                                <td>Cart Subtotal</td>
-                                <td>
-                                    {ConvertToCurrency(cartState.subTotal)}
-                                </td>
-                            </tr>
+                            <table className="cart-totals-table">
+                                <tbody>
+                                    <tr>
+                                        <td>Total items</td>
+                                        <td>{cartState.totalQuantities}</td>
+                                    </tr>
 
-                            <tr>
-                                <td>Shipping and Handing</td>
-                                <td>
-                                    {ConvertToCurrency(cartState.shippingCost)}
-                                </td>
-                            </tr>
+                                    <tr>
+                                        <td>Cart Subtotal</td>
+                                        <td>
+                                            {ConvertToCurrency(cartState.subTotal)}
+                                        </td>
+                                    </tr>
 
-                            <tr>
-                                <td>Vat({cartState.tax}%)</td>
-                                <td>
-                                    {ConvertToCurrency(cartState.taxAmount)}
-                                </td>
-                            </tr>
+                                    <tr>
+                                        <td>Shipping and Handing</td>
+                                        <td>
+                                            {ConvertToCurrency(cartState.shippingCost)}
+                                        </td>
+                                    </tr>
 
-                            {cartState.appliedCoupon !== "" && (
-                                <tr>
-                                    <td>
-                                        discount({cartState.appliedCoupon}{" "}
-                                        <Trash
-                                            className="text-dark"
-                                            onClick={handleRemoveCoupon}
-                                            role="button"
-                                        />
-                                        )
-                                    </td>
-                                    <td>
-                                        {ConvertToCurrency(cartState.discount)}
-                                    </td>
-                                </tr>
-                            )}
+                                    <tr>
+                                        <td>Vat({cartState.tax}%)</td>
+                                        <td>
+                                            {ConvertToCurrency(cartState.taxAmount)}
+                                        </td>
+                                    </tr>
 
-                            <tr className="fw-bold">
-                                <td>Order Total</td>
-                                <td>
-                                    {ConvertToCurrency(cartState.orderTotal)}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    {cartState.appliedCoupon !== "" && (
+                                        <tr>
+                                            <td>
+                                                discount({cartState.appliedCoupon}{" "}
+                                                <Trash
+                                                    className="text-dark"
+                                                    onClick={handleRemoveCoupon}
+                                                    role="button"
+                                                />
+                                                )
+                                            </td>
+
+                                            <td>
+                                                {ConvertToCurrency(cartState.discount)}
+                                            </td>
+                                        </tr>
+                                    )}
+
+                                    <tr className="fw-bold">
+                                        <td>Order Total</td>
+                                        <td>
+                                            {ConvertToCurrency(cartState.orderTotal)}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
                 </Col>
             </Row>
         </div>

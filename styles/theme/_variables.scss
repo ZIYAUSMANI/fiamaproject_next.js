@@ -65,7 +65,6 @@ $theme-colors: (
     "primary": $primary,
     "secondary": $secondary,
     "success": $accent,
-    // you can map green here
     "info": $info,
     "warning": $warning,
     "danger": $danger,
@@ -85,6 +84,7 @@ $theme-colors: (
     --primary: #{$primary};
     --secondary: #{$secondary};
     --accent: #{$accent};
+
     --info: #{$info};
     --warning: #{$warning};
     --danger: #{$danger};
@@ -107,6 +107,8 @@ $theme-colors: (
     --border-color: #{$border-color};
     --input-bg: #{$input-bg};
     --input-border-color: #{$input-border-color};
+    --theme-btn-bg: #{$secondary};
+    --theme-btn-icon: #{$white};
 }
 
 
@@ -115,7 +117,6 @@ $theme-colors: (
 // ==========================================
 
 [data-bs-theme="dark"] {
-
     --primary: #{$dark-primary};
     --secondary: #{$dark-secondary};
     --accent: #{$dark-accent};
@@ -134,7 +135,8 @@ $theme-colors: (
     --gray-700: #{$dark-gray-700};
     --gray-800: #{$dark-gray-800};
     --gray-900: #{$dark-gray-900};
-
+    --theme-btn-bg: #{$dark-secondary};
+    --theme-btn-icon: #{$gray-900};
     --body-bg: #{$dark-gray-100};
     --body-color: #{$dark-gray-700};
     --heading-color: #{$dark-gray-900};
@@ -149,26 +151,24 @@ $theme-colors: (
 // ==========================================
 
 [data-bs-theme="dark"] {
-
     --bs-primary: var(--primary);
     --bs-secondary: var(--secondary);
-
     --bs-success: var(--accent);
     --bs-info: var(--info);
     --bs-warning: var(--warning);
     --bs-danger: var(--danger);
 
     --bs-light: var(--gray-100);
-    --bs-dark: var(--gray-900);
+    --bs-dark: var(--secondary);
 
     --bs-body-bg: var(--body-bg);
     --bs-body-color: var(--body-color);
 
     --bs-border-color: var(--border-color);
-
     --bs-heading-color: var(--heading-color);
 
     --bs-tertiary-bg: var(--gray-200);
+
 }
 
 
@@ -262,12 +262,88 @@ $btn-text-transform: uppercase;
 // 7. GLOBAL STYLES
 // ==========================================
 
-.category-link:hover {
-    color: var(--bs-primary) !important;
+html {
+    overflow-x: hidden;
 }
 
 body {
     font-family: var(--font-montserrat), sans-serif;
     background-color: var(--body-bg);
     color: var(--body-color);
+    overflow-x: hidden;
+}
+
+
+// ==========================================
+// TEXT UTILITIES
+// ==========================================
+
+// Light mode
+.text-dark {
+    color: var(--secondary) !important;
+}
+
+.text-secondary {
+    color: var(--secondary) !important;
+}
+
+
+// Dark mode
+[data-bs-theme="dark"] {
+    .text-dark {
+        color: var(--secondary) !important;
+    }
+
+    .text-secondary {
+        color: var(--secondary) !important;
+    }
+}
+
+
+// ==========================================
+// CATEGORY LINKS
+// ==========================================
+
+.category-link {
+    color: var(--body-color) !important;
+    transition: $transition-base;
+
+    &:hover {
+        color: var(--bs-primary) !important;
+    }
+}
+
+
+// ==========================================
+// DARK MODE CATEGORY LINKS
+// ==========================================
+
+[data-bs-theme="dark"] {
+    .category-link {
+        color: var(--gray-800) !important;
+
+        &:hover {
+            color: var(--bs-primary) !important;
+        }
+    }
+}
+
+.theme-change-btn {
+    background-color: var(--theme-btn-bg) !important;
+    color: var(--theme-btn-icon) !important;
+    border: none;
+}
+
+.theme-change-btn svg {
+    color: var(--theme-btn-icon);
+}
+
+.breadcrumb-banner {
+    background-color: var(--gray-300) !important;
+}
+
+[data-bs-theme="dark"] {
+    .breadcrumb-banner {
+        background-color: var(--gray-600) !important;
+    }
 }

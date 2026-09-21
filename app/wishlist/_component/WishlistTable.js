@@ -3,6 +3,7 @@
 import { addToCart, updateCart } from "@/store/Slice/cartSlice";
 import { removeFromWishlist } from "@/store/Slice/wishlistSlice";
 import { ConvertToCurrency } from "@/utils/utils";
+import Link from "next/link";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { X } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -62,18 +63,21 @@ export default function WishlistTable() {
                             className="d-md-none text-center"
                         >
                             <div className="mb-3">
-                                <img
-                                    src={item.thumbnail}
-                                    alt={item.title}
-                                    width="110"
-                                    height="110"
-                                    className="img-fluid"
-                                    style={{
-                                        width: "110px",
-                                        height: "110px",
-                                        objectFit: "contain",
-                                    }}
-                                />
+                                <Link
+                                    href={`/productdetail/${item.id}`}
+                                    className="text-decoration-none"
+                                >
+                                    <img
+                                        src={item.thumbnail}
+                                        alt={item.title}
+                                        className="img-fluid"
+                                        style={{
+                                            width: "110px",
+                                            height: "110px",
+                                            objectFit: "contain",
+                                        }}
+                                    />
+                                </Link>
                             </div>
 
                             <div className="py-3 border-top border-bottom">
@@ -135,18 +139,21 @@ export default function WishlistTable() {
                             md={2}
                             className="d-none d-md-block text-center"
                         >
-                            <img
-                                src={item.thumbnail}
-                                alt={item.title}
-                                width="90"
-                                height="90"
-                                className="img-fluid"
-                                style={{
-                                    width: "90px",
-                                    height: "90px",
-                                    objectFit: "contain",
-                                }}
-                            />
+                            <Link
+                                href={`/productdetail/${item.id}`}
+                                className="text-decoration-none"
+                            >
+                                <img
+                                    src={item.thumbnail}
+                                    alt={item.title}
+                                    className="img-fluid"
+                                    style={{
+                                        width: "110px",
+                                        height: "110px",
+                                        objectFit: "contain",
+                                    }}
+                                />
+                            </Link>
                         </Col>
 
                         <Col

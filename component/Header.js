@@ -23,14 +23,19 @@ import { removeFromCart } from '@/store/Slice/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { ConvertToCurrency } from '@/utils/utils';
 import { Moon, Sun } from 'react-bootstrap-icons';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+
 
 
 export default function Header() {
 
     const { wishlistItems } = useSelector((state) => state.wishlist);
-    const cartState = useSelector((state) => state.cart)
-
+    const cartState = useSelector((state) => state.cart);
+    const [search, setSearch] = useState("");
+    const router = useRouter();
     const dispatch = useDispatch();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
 
 
     const handleRemove = (id) => {
@@ -59,6 +64,29 @@ export default function Header() {
         setDarkMode((prev) => !prev);
     };
 
+    const handleSearch = (e) => {
+        const value = e.target.value;
+
+        setSearch(value);
+
+        if (value.trim()) {
+            router.push(`/shop?search=${encodeURIComponent(value)}`);
+        } else {
+            router.push("/shop");
+        }
+
+        setShowMenu(false);
+    };
+
+    const handleSearchFocus = () => {
+        if (!search.trim() && !pathname.startsWith("/shop")) {
+            router.push("/shop");
+        }
+    };
+
+    useEffect(() => {
+        setSearch(searchParams.get("search") || "");
+    }, [searchParams]);
     useEffect(() => {
         const savedDarkMode = localStorage.getItem("dark");
 
@@ -122,12 +150,15 @@ export default function Header() {
 
                         {/* 3. Search Bar (Desktop Only) */}
                         <Col lg={5} className="d-none d-lg-block">
-                            <Form className="header-search-form w-100" onSubmit={(e) => e.preventDefault()}>
+                            <Form className="header-search-form w-100" >
                                 <InputGroup className="search-input-group">
                                     <Form.Control
                                         type="text"
                                         placeholder="Search here..."
                                         aria-label="Search"
+                                        value={search}
+                                        onChange={handleSearch}
+                                        onFocus={handleSearchFocus}
                                         className="search-input border-end-0 shadow-none"
                                     />
                                     <Button
@@ -180,13 +211,11 @@ export default function Header() {
                             </Link>
                             <Badge
                                 onClick={handleThemeMode}
-                                className={`theme-change-btn me-2 rounded-circle p-1 
-    ${darkMode ? "bg-white text-dark" : "bg-dark text-light"}`}
+                                className="theme-change-btn me-2 rounded-circle p-1"
                                 role="button"
                             >
-                                {darkMode ? <Sun size={18} /> : <Moon size={18} color="white" />}
+                                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
                             </Badge>
-
                             {/* Menu Offcanvas Trigger (Visible on all breakpoints now) */}
                             <div
                                 className="mobile-menu-trigger d-block d-lg-none cursor-pointer ms-2"

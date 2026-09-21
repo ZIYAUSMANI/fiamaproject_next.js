@@ -11,9 +11,8 @@ export const metadata = {
 export default async function CategoryShopPage({ params }) {
     const { slug } = await params;
 
+
     return (
-
-
         <>
             <BreadcrumbBanner />
 

@@ -5,6 +5,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { X } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import AddToCartRedux from "./AddTocartRedux";
+import Link from "next/link";
 
 
 export default function CartTable() {
@@ -50,16 +51,21 @@ export default function CartTable() {
                             >
 
                                 <div className="mb-3">
-                                    <img
-                                        src={item.thumbnail}
-                                        alt={item.title}
-                                        className="img-fluid"
-                                        style={{
-                                            width: "110px",
-                                            height: "110px",
-                                            objectFit: "contain",
-                                        }}
-                                    />
+                                    <Link
+                                        href={`/productdetail/${item.id}`}
+                                        className="text-decoration-none"
+                                    >
+                                        <img
+                                            src={item.thumbnail}
+                                            alt={item.title}
+                                            className="img-fluid"
+                                            style={{
+                                                width: "110px",
+                                                height: "110px",
+                                                objectFit: "contain",
+                                            }}
+                                        />
+                                    </Link>
                                 </div>
 
                                 <div className="border-top border-bottom py-4">
@@ -119,16 +125,21 @@ export default function CartTable() {
                                 md={2}
                                 className="d-none d-md-block text-center"
                             >
-                                <img
-                                    src={item.thumbnail}
-                                    alt={item.title}
-                                    className="img-fluid"
-                                    style={{
-                                        width: "90px",
-                                        height: "90px",
-                                        objectFit: "contain",
-                                    }}
-                                />
+                                <Link
+                                    href={`/productdetail/${item.id}`}
+                                    className="text-decoration-none"
+                                >
+                                    <img
+                                        src={item.thumbnail}
+                                        alt={item.title}
+                                        className="img-fluid"
+                                        style={{
+                                            width: "110px",
+                                            height: "110px",
+                                            objectFit: "contain",
+                                        }}
+                                    />
+                                </Link>
                             </Col>
 
                             <Col

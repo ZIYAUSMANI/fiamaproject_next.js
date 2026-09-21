@@ -3,20 +3,21 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Pagination } from "react-bootstrap";
 
 import { getProducts, getProductsByCategory } from "@/helper/Services";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import ProductCard from "@/component/ProductCard";
 import ProductToolbar from "./ProductToolbar";
 
-function ProductGridWithPagination() {
+function ProductGridWithPagination({ slug }) {
 
     const [listProducts, setListProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const params = useParams();
-    const slug = params?.slug;
+
     const itemsPerPage = 9;
+    const searchParams = useSearchParams();
+    const search = searchParams.get("search") || "";
 
 
     useEffect(() => {
@@ -45,10 +46,28 @@ function ProductGridWithPagination() {
         fetchProducts();
     }, [slug]);
 
-    const totalPages = Math.ceil(listProducts.length / itemsPerPage);
+    const filteredProducts = listProducts.filter((product) => {
+        const searchText = search.toLowerCase().trim();
+
+        if (!searchText) {
+            return true;
+        }
+
+        return (
+            product.title?.toLowerCase().includes(searchText) ||
+            product.category?.toLowerCase().includes(searchText) ||
+            product.brand?.toLowerCase().includes(searchText)
+        );
+    });
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [search]);
+
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = listProducts.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
 
     const handlePageChange = (pageNumber) => {
         if (pageNumber < 1 || pageNumber > totalPages) {
@@ -88,7 +107,7 @@ function ProductGridWithPagination() {
 
             <ProductToolbar
                 showing={currentItems.length}
-                total={listProducts.length}
+                total={filteredProducts.length}
             />
             <Row className="g-4 mt-2">
                 {currentItems.map((item) => (
@@ -99,9 +118,9 @@ function ProductGridWithPagination() {
             </Row>
 
             {currentItems.length === 0 && (
-                <div className="text-center py-5">
+                <div className="text-center py-5 fs-5 text-danger">
                     <p>
-                        No products found.
+                        No products found for "{search}".
                     </p>
                 </div>
             )}

@@ -3,20 +3,26 @@
 import { Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+
 import formValidationSchema from "@/FromSchema/formValidationSchema";
 import { createOrder, getUserById } from "@/helper/Services";
+
 import BreadcrumbBanner from "@/component/BreadcrumbBanner";
 import CheckoutLoginSection from "./CheckoutLoginSection";
 import CheckoutCouponSection from "./CheckoutCouponSection";
 import BillingDetails from "./BillingDetails";
 import PaymentSection from "./PaymentSection";
+
 function CheckOut() {
     const router = useRouter();
+
     const cartState = useSelector((state) => state.cart);
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const {
         register,
@@ -118,6 +124,8 @@ function CheckOut() {
         const userId = localStorage.getItem("id");
 
         if (!userId) {
+            setIsLoggedIn(false);
+
             const toastId = "login-required";
 
             if (!toast.isActive(toastId)) {
@@ -165,17 +173,14 @@ function CheckOut() {
             try {
                 const userId = localStorage.getItem("id");
 
+                // User is not logged in
                 if (!userId) {
-                    const toastId = "login-required";
-
-                    if (!toast.isActive(toastId)) {
-                        toast.error("Please login first to continue.", {
-                            toastId,
-                        });
-                    }
-
+                    setIsLoggedIn(false);
                     return;
                 }
+
+                // User is logged in
+                setIsLoggedIn(true);
 
                 const response = await getUserById(userId);
 
@@ -195,12 +200,9 @@ function CheckOut() {
                 const toastId = "user-fetch-error";
 
                 if (!toast.isActive(toastId)) {
-                    toast.error(
-                        "Something went wrong. Please try again.",
-                        {
-                            toastId,
-                        }
-                    );
+                    toast.error("Something went wrong. Please try again.", {
+                        toastId,
+                    });
                 }
             }
         };
@@ -213,9 +215,11 @@ function CheckOut() {
             <BreadcrumbBanner />
 
             <Container>
-                <CheckoutLoginSection />
+                {!isLoggedIn && <CheckoutLoginSection />}
 
-                <CheckoutCouponSection />
+                {cartState.cartItems?.length > 0 && (
+                    <CheckoutCouponSection />
+                )}
 
                 <Form onSubmit={(e) => e.preventDefault()}>
                     <BillingDetails
