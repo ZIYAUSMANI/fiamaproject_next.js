@@ -1,6 +1,4 @@
 import ProductDetails from "./_component/ProductDetails";
-
-
 export const metadata = {
     title: "Product Details",
     description:

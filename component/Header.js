@@ -24,17 +24,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ConvertToCurrency } from '@/utils/utils';
 import { Moon, Sun } from 'react-bootstrap-icons';
 
-/*import image1 from "../assets/image/1.webp";
-import image2 from "../assets/image/2.webp";
- 
-import { useDispatch, useSelector } from 'react-redux';
-import { ConvertToCurrency } from '../../../../indexpert/react/fiamaproject/src/utils/utils';
-import { removeFromCart } from '../../../../indexpert/react/fiamaproject/src/store/Slice/cartSlice';
-
-*/
-
-
-
 
 export default function Header() {
 
