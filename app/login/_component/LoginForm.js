@@ -5,7 +5,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import formValidationSchema from "@/FromSchema/formValidationSchema";
 import { authUser } from "@/helper/Services";
@@ -15,17 +15,18 @@ const LoginForm = () => {
     const [error, setError] = useState("");
 
     const router = useRouter();
-    const searchParams = useSearchParams();
 
-    const accountCreated = searchParams.get("accountCreated");
+
 
     useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const accountCreated = params.get("accountCreated");
+
         if (accountCreated === "true") {
             toast.success("Account created successfully.");
-
             router.replace("/login");
         }
-    }, [accountCreated, router]);
+    }, [router]);
 
     const {
         register,

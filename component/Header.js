@@ -55,11 +55,20 @@ export default function Header() {
 
 
     const handleCloseCart = () => setShowCart(false);
-    const handleOpenCart = (e) => {
-        e.preventDefault();
+
+    const handleOpenCart = () => {
         setShowCart(true);
     };
 
+    const handleViewCart = () => {
+        setShowCart(false);
+        router.push("/cart");
+    };
+
+    const handleCheckout = () => {
+        setShowCart(false);
+        router.push("/checkout");
+    };
     const handleThemeMode = () => {
         setDarkMode((prev) => !prev);
     };
@@ -187,13 +196,14 @@ export default function Header() {
                             </Link>
 
                             {/* Cart Trigger */}
-                            <Link
-                                href="/cart"
-                                className="cart-widget text-decoration-none d-flex align-items-center me-3 me-sm-4"
+                            <button
+                                type="button"
+                                className="cart-widget text-decoration-none d-flex align-items-center me-3 me-sm-4 border-0 bg-transparent p-0"
                                 onClick={handleOpenCart}
                             >
                                 <div className="cart-icon-wrapper position-relative me-2 me-sm-3 d-inline-flex align-items-center">
                                     <BsHandbag size={22} className="text-dark mt-1" />
+
                                     <span className="cart-badge badge rounded-circle bg-pink position-absolute">
                                         {cartState.totalQuantities}
                                     </span>
@@ -208,7 +218,7 @@ export default function Header() {
                                         {ConvertToCurrency(cartState.subTotal || 0)}
                                     </span>
                                 </div>
-                            </Link>
+                            </button>
                             <Badge
                                 onClick={handleThemeMode}
                                 className="theme-change-btn me-2 rounded-circle p-1"
@@ -386,19 +396,19 @@ export default function Header() {
 
                         <div className="d-flex gap-3 justify-content-between mb-4">
                             <Button
-                                as={Link}
-                                href="/cart"
+                                type="button"
                                 variant="primary"
                                 className="px-3"
+                                onClick={handleViewCart}
                             >
                                 View Cart
                             </Button>
 
                             <Button
-                                as={Link}
-                                href="/checkout"
-                                variant="secondary  "
+                                type="button"
+                                variant="secondary"
                                 className="px-3"
+                                onClick={handleCheckout}
                             >
                                 Checkout
                             </Button>

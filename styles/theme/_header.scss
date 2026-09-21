@@ -95,6 +95,8 @@
 
     .cart-widget {
 
+        cursor: pointer;
+
         .cart-title {
             font-size: 0.75rem;
             line-height: 1;
@@ -140,7 +142,7 @@
     background-color: var(--body-bg);
     color: var(--body-color);
 
-    .overflow-auto {
+    .custom-cart-scroll {
         max-height: 320px;
         padding-right: 8px;
 
@@ -270,6 +272,15 @@
 }
 
 
+.offcanvas-backdrop {
+    z-index: 1040;
+}
+
+.offcanvas {
+    z-index: 1050;
+}
+
+
 /* ==========================================
    DARK MODE
    ========================================== */
@@ -389,13 +400,7 @@
     }
 }
 
-
-/* ==========================================
-   TRANSITIONS
-   ========================================== */
-
 .fiama-header,
-.cart-offcanvas,
 .mobile-menu-offcanvas,
 .search-input-group,
 .search-input,

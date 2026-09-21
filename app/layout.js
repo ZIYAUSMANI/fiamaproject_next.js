@@ -6,6 +6,7 @@ import BrandLogo from "@/component/BrandLogo";
 import Navigation from "@/component/Navigation";
 import ScrollToTop from "@/component/ScrollToTop";
 import ReduxProvider from "@/provider/ReduxProvider";
+import { Suspense } from "react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -62,7 +63,9 @@ export default function RootLayout({ children }) {
     <html lang="en" className={montserrat.variable} data-scroll-behavior="smooth">
       <body>
         <ReduxProvider>
-          <Header />
+          <Suspense fallback={null}>
+            <Header />
+          </Suspense>
           <Navigation />
           {children}
           <BrandLogo />

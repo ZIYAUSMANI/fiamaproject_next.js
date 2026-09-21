@@ -50,13 +50,11 @@ const OrderSuccess = () => {
                                 <h4 className="fw-semibold mb-3">
                                     Order Summary
                                 </h4>
-
-                                {cartState.cartItems.map((item) => (
+                                {(cartState?.cartItems || []).map((item) => (
                                     <div
                                         key={item.id}
                                         className="d-flex align-items-center justify-content-between border-bottom py-2"
                                     >
-                                        {/* Product */}
                                         <div className="d-flex align-items-center">
                                             <img
                                                 src={item.thumbnail}
@@ -82,21 +80,19 @@ const OrderSuccess = () => {
                                             </div>
                                         </div>
 
-                                        {/* Price */}
                                         <span className="fw-medium ms-3">
                                             {ConvertToCurrency(item.totalPrice)}
                                         </span>
                                     </div>
                                 ))}
 
-                                {/* Total */}
                                 <div className="d-flex justify-content-end gap-5 pt-3">
                                     <span className="fw-bold text-dark fs-5">
                                         Total
                                     </span>
 
                                     <strong className="fw-bold text-dark">
-                                        {ConvertToCurrency(cartState.orderTotal)}
+                                        {ConvertToCurrency(cartState?.orderTotal || 0)}
                                     </strong>
                                 </div>
                             </Card.Body>

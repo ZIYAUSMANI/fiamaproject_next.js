@@ -2,6 +2,7 @@ import BreadcrumbBanner from "@/component/BreadcrumbBanner";
 import ProductGridWithPagination from "../_component/ProductGridWithPagination";
 import CategoryList from "../_component/CategoryList";
 import { Col, Container, Row } from "react-bootstrap";
+import { Suspense } from "react";
 export const metadata = {
     title: "Shop",
     description:
@@ -18,14 +19,17 @@ export default async function CategoryShopPage({ params }) {
 
             <Container>
                 <Row className="mt-5">
-                    {/* Products - first on medium/small, second on large */}
+
                     <Col lg={9} order="1" className="order-lg-2">
-                        <ProductGridWithPagination slug={slug} />
+                        <Suspense fallback={null}>
+                            <ProductGridWithPagination />
+                        </Suspense>
                     </Col>
 
-                    {/* Categories - below products on medium/small, left on large */}
                     <Col lg={3} order="2" className="order-lg-1">
-                        <CategoryList />
+                        <Suspense fallback={null}>
+                            <CategoryList />
+                        </Suspense>
                     </Col>
                 </Row>
             </Container>
