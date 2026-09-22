@@ -6,6 +6,7 @@ import { getProducts, getProductsByCategory } from "@/helper/Services";
 import { useParams, useSearchParams } from "next/navigation";
 import ProductCard from "@/component/ProductCard";
 import ProductToolbar from "./ProductToolbar";
+import { FiArrowLeft } from "react-icons/fi";
 
 function ProductGridWithPagination({ slug }) {
 
@@ -118,9 +119,17 @@ function ProductGridWithPagination({ slug }) {
             </Row>
 
             {currentItems.length === 0 && (
-                <div className="text-center py-5 fs-5 text-danger">
-                    <p>
-                        No products found for "{search}".
+                <div className="text-center py-5">
+                    <p className="fs-3 text-danger fw-bold mb-2">
+                        ! No products found for "{search}".
+                    </p>
+
+                    <p className="text-secondary d-flex justify-content-center text-center">
+                        <span className="d-none d-lg-block">
+                            <FiArrowLeft className="me-2 fs-4" />
+                        </span>
+
+                        <span className="fw-semibold">Please choose a category</span>
                     </p>
                 </div>
             )}

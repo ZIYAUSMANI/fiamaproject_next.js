@@ -11,7 +11,6 @@ import {
     Offcanvas,
     Button,
     CloseButton,
-    Accordion,
     Badge
 } from 'react-bootstrap';
 import Link from 'next/link';
@@ -80,6 +79,17 @@ export default function Header() {
 
         if (value.trim()) {
             router.push(`/shop?search=${encodeURIComponent(value)}`);
+        } else {
+            router.push("/shop");
+        }
+
+    };
+
+    const handleMobileSearch = (e) => {
+        e.preventDefault();
+
+        if (search.trim()) {
+            router.push(`/shop?search=${encodeURIComponent(search.trim())}`);
         } else {
             router.push("/shop");
         }
@@ -258,16 +268,29 @@ export default function Header() {
                 <Offcanvas.Body className="d-flex flex-column px-4 py-3">
 
                     <div className="mb-4">
-                        <InputGroup className="bg-light border-0 rounded-1">
-                            <Form.Control
-                                placeholder="Search..."
-                                className="bg-transparent border-0 py-2 shadow-none small text-secondary"
-                            />
-                            <InputGroup.Text className="bg-transparent border-0 pe-3">
-                                <FiSearch size={16} className="text-muted" />
-                            </InputGroup.Text>
-                        </InputGroup>
+                        <Form onSubmit={handleMobileSearch}>
+                            <InputGroup className="bg-light border-0 rounded-1">
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Search..."
+                                    aria-label="Search"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    onFocus={handleSearchFocus}
+                                    className="bg-transparent border-0 py-2 shadow-none small text-secondary"
+                                />
+
+                                <Button
+                                    type="submit"
+                                    variant="link"
+                                    className="bg-transparent border-0 pe-3"
+                                >
+                                    <FiSearch size={16} className="text-muted" />
+                                </Button>
+                            </InputGroup>
+                        </Form>
                     </div>
+
 
                     <div className="mobile-nav-menu mb-4">
                         {NAV_ITEMS.map((item) => (

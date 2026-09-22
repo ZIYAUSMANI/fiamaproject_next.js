@@ -112,13 +112,13 @@ const AddToCartRedux = ({ product, isCart, isDetails }) => {
                     style={{ cursor: "pointer" }}
                     onClick={handleAddToCart}
                 >
-                    <span className="add-cart-text">
-                        ADD TO CART
-                    </span>
+                    <>
+                        <span className="add-cart-text">
+                            ADD TO CART
+                        </span>
 
-                    {!isDetails && (
-                        <Handbag className="cart-icon ms-2" />
-                    )}
+                        <Handbag className="cart-icon" />
+                    </>
                 </div>
             )}
 

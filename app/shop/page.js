@@ -9,6 +9,7 @@ export const metadata = {
     description:
         "Explore beautiful flowers, bouquets, gifts, and floral arrangements at Fiama Flower Shop.",
 };
+
 export default function ShopPage() {
     return (
         <>
@@ -16,17 +17,21 @@ export default function ShopPage() {
 
             <Container>
                 <Row className="mt-5">
-                    <Col lg={9} order="1" className="order-lg-2">
+
+                    {/* Products */}
+                    <Col lg={9} className="order-2 order-lg-2">
                         <Suspense fallback={null}>
                             <ProductGridWithPagination />
                         </Suspense>
                     </Col>
 
-                    <Col lg={3} order="2" className="order-lg-1">
+                    {/* Categories */}
+                    <Col lg={3} className="order-1 order-lg-1">
                         <Suspense fallback={null}>
                             <CategoryList />
                         </Suspense>
                     </Col>
+
                 </Row>
             </Container>
         </>
