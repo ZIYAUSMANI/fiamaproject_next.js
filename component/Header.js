@@ -75,13 +75,13 @@ export default function Header() {
     const handleSearch = (e) => {
         e.preventDefault();
 
-        if (search.trim()) {
-            router.push(`/shop?search=${encodeURIComponent(search.trim())}`);
-        } else {
-            router.push("/shop");
+        if (!search.trim()) {
+            return;
         }
 
+        router.push(`/shop?search=${encodeURIComponent(search.trim())}`);
         setShowMenu(false);
+
     };
 
 
