@@ -73,19 +73,6 @@ export default function Header() {
     };
 
     const handleSearch = (e) => {
-        const value = e.target.value;
-
-        setSearch(value);
-
-        if (value.trim()) {
-            router.push(`/shop?search=${encodeURIComponent(value)}`);
-        } else {
-            router.push("/shop");
-        }
-
-    };
-
-    const handleMobileSearch = (e) => {
         e.preventDefault();
 
         if (search.trim()) {
@@ -97,11 +84,6 @@ export default function Header() {
         setShowMenu(false);
     };
 
-    const handleSearchFocus = () => {
-        if (!search.trim() && !pathname.startsWith("/shop")) {
-            router.push("/shop");
-        }
-    };
 
     useEffect(() => {
         setSearch(searchParams.get("search") || "");
@@ -169,17 +151,17 @@ export default function Header() {
 
                         {/* 3. Search Bar (Desktop Only) */}
                         <Col lg={5} className="d-none d-lg-block">
-                            <Form className="header-search-form w-100" >
+                            <Form className="header-search-form w-100" onSubmit={handleSearch}>
                                 <InputGroup className="search-input-group">
                                     <Form.Control
                                         type="text"
                                         placeholder="Search here..."
                                         aria-label="Search"
                                         value={search}
-                                        onChange={handleSearch}
-                                        onFocus={handleSearchFocus}
+                                        onChange={(e) => setSearch(e.target.value)}
                                         className="search-input border-end-0 shadow-none"
                                     />
+
                                     <Button
                                         type="submit"
                                         variant="link"
@@ -268,7 +250,7 @@ export default function Header() {
                 <Offcanvas.Body className="d-flex flex-column px-4 py-3">
 
                     <div className="mb-4">
-                        <Form onSubmit={handleMobileSearch}>
+                        <Form onSubmit={handleSearch}>
                             <InputGroup className="bg-light border-0 rounded-1">
                                 <Form.Control
                                     type="text"
@@ -276,7 +258,6 @@ export default function Header() {
                                     aria-label="Search"
                                     value={search}
                                     onChange={(e) => setSearch(e.target.value)}
-                                    onFocus={handleSearchFocus}
                                     className="bg-transparent border-0 py-2 shadow-none small text-secondary"
                                 />
 
