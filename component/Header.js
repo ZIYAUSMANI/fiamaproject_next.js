@@ -72,16 +72,38 @@ export default function Header() {
         setDarkMode((prev) => !prev);
     };
 
+    const handleSearchChange = (e) => {
+        const value = e.target.value;
+
+        setSearch(value);
+
+        if (pathname === "/shop") {
+            if (value.trim()) {
+                router.replace(
+                    `/shop?search=${encodeURIComponent(value.trim())}`
+                );
+            } else {
+                router.replace("/shop");
+            }
+        }
+    };
+
     const handleSearch = (e) => {
         e.preventDefault();
 
         if (!search.trim()) {
+            setShowMenu(false);
             return;
         }
 
-        router.push(`/shop?search=${encodeURIComponent(search.trim())}`);
-        setShowMenu(false);
+        if (pathname !== "/shop") {
+            router.push(
+                `/shop?search=${encodeURIComponent(search.trim())}`
+            );
 
+
+        }
+        setShowMenu(false);
     };
 
 
@@ -158,7 +180,7 @@ export default function Header() {
                                         placeholder="Search here..."
                                         aria-label="Search"
                                         value={search}
-                                        onChange={(e) => setSearch(e.target.value)}
+                                        onChange={handleSearchChange}
                                         className="search-input border-end-0 shadow-none"
                                     />
 
@@ -257,7 +279,7 @@ export default function Header() {
                                     placeholder="Search..."
                                     aria-label="Search"
                                     value={search}
-                                    onChange={(e) => setSearch(e.target.value)}
+                                    onChange={handleSearchChange}
                                     className="bg-transparent border-0 py-2 shadow-none small text-secondary"
                                 />
 
